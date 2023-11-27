@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { CarrinhoComponent } from './Views/carrinho/carrinho.component';
 import { VendasComponent } from './Views/vendas/vendas.component';
 import { HomeComponent } from './Views/home/home.component';
+import { CadastroLivroComponent } from './Views/cadastro-livro/cadastro-livro.component';
 
 const routes: Routes = [
-  {path:' ', component: HomeComponent},
+  {path:'home', component: HomeComponent},
   {path:'carrinho', component: CarrinhoComponent},
-  {path:'vendas', component: VendasComponent},
+  {path:'upload', component: CadastroLivroComponent},
 ];
 
 @NgModule({

@@ -22,7 +22,7 @@ body{
 
  .menu ul li{
     display: inline;
-  } 
+  }
 
 .menu ul li a{
     color: #000;
@@ -62,5 +62,277 @@ img.pequena:hover{
     padding: 7px;
 }
 .bnt-login:hover {
-    background-color: rgb(136, 197, 138); 
-  } 
+    background-color: rgb(136, 197, 138);
+  }
+  main {
+    padding: 0px 150px 0px 150px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  }
+
+  .page-top {
+    position: relative;
+    margin: 2vw 0 0 0;
+  }
+
+  .page-top img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    margin-top: 0;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .main-text {
+    color: #000;
+    font-family: Roboto;
+    font-size: 60px;
+    font-weight: 800;
+    line-height: 60px;
+    letter-spacing: -3.3px;
+    text-transform: capitalize;
+    max-width: 500px;
+    padding: 8vw 0 0 0;
+  }
+
+  .description {
+    color: rgba(0, 0, 0, 0.4);
+    font-family: Roboto;
+    text-align: justify;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    line-height: 18px;
+    text-transform: capitalize;
+    max-width: 300px;
+    width: 100%;
+    padding: 1.5vw 0 0 0;
+  }
+
+  .destaques {
+    background: #849a8a;
+    color: white;
+    font-weight: 800;
+    font-family: Roboto;
+    font-size: 15px;
+    border: transparent;
+    width: 90px;
+    height: 40px;
+    border-radius: 6px;
+    outline: 3px solid rgba(132, 154, 138, 0.2);
+  }
+
+  .sale {
+    margin: 0vw 0 0 1.5vw;
+    background: #ffffff;
+    color: #849a8a;
+    font-weight: 800;
+    font-family: Roboto;
+    font-size: 15px;
+    border: transparent;
+    width: 90px;
+    height: 40px;
+    border-radius: 6px;
+    outline: 3px solid rgba(132, 154, 138, 0.2);
+  }
+
+  .button-nav {
+    margin: 1.5vw 0 0 0;
+  }
+
+  .color {
+    color: #849a8a;
+  }
+
+  .page-mid {
+    padding: 40vh 0 0 0;
+  }
+
+  .product-category {
+    color: #000;
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+  }
+
+  .product {
+    margin: 10px -8px;
+    padding: 0 0;
+  }
+
+  .slider-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+    margin-bottom: -40px;
+  }
+
+  .slider-main {
+    display: flex;
+    position: absolute;
+  }
+
+  .slider-fade{
+    z-index: 1;
+    position: absolute;
+    right: -25px;
+    width: 100px;
+    height: 240px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.285), white);
+    filter: blur(16px);
+  }
+
+  .item {
+    display: inline-block;
+    width: 180px;
+    height: 240px;
+    background-color: #D9D9D9;
+    position: relative;
+    margin: 0 8px;
+    border-radius: 7px;
+  }
+
+  .prev {
+    position: absolute;
+    left: 30px;
+    top: 40%;
+    transform: translate(-50%, -50%);
+  }
+
+  .next {
+    cursor: pointer;
+    background: none;
+    border: none;
+    overflow: visible;
+    position: absolute;
+    right: 10px;
+    top: 35%;
+    transition: 0.09s;
+    width: 20px;
+    height: 20px;
+    z-index: 2;
+  }
+
+  .next:active{
+    transform: scale(0.9);
+  }
+
+  .next img{
+    width: 100%;
+    height: 100%;
+  }
+
+  .offer-card {
+    display: flex;
+  }
+
+  .left-card {
+    border-radius: 14px;
+    width: 75%;
+    height: 35vh;
+    border: 1px solid rgb(0, 0, 0);
+    overflow: hidden;
+  }
+
+  /* .left-card img {
+    right: -100px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  } */
+
+  .right-card {
+    border-radius: 14px;
+    margin: 0 0 0 12px;
+    width: 25%;
+    height: 35vh;
+    outline: 1px solid rgb(0, 0, 0);
+  }
+
+  .general-products{
+    display: flex;
+  }
+
+  .filter{
+    padding: 0 7vw 0 0;
+  }
+
+  .general-books-title{
+    margin: 15vh 0 7vh 0;
+    color: #000;
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+  }
+
+  .category{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .category-title{
+    color: #000;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .category-input{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .category-text-class{
+    margin: 0.5vw;
+  }
+
+  .categorys {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border: 1px solid #000000;
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .categorys:checked{
+    background-color: rgb(0, 0, 0);
+  }
+
+  .category-design{
+    display: flex;
+    align-items: center;
+  }
+
+  .products-general{
+    padding: 13vw 0 0 0;
+  }
+
+  .item-general {
+    display: inline-block;
+    width: 210px;
+    height: 270px;
+    background-color: #D9D9D9;
+    position: relative;
+    margin: 0 8px;
+    border-radius: 7px;
+    margin-bottom: 2vh;
+  }
+
+  .info{
+    background-color: red;
+    display: flex;
+    margin-top: 10vh 10vh 10vh 10vh;
+  }
+  
