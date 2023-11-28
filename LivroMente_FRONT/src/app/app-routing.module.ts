@@ -5,7 +5,7 @@ import { VendasComponent } from './Views/vendas/vendas.component';
 import { HomeComponent } from './Views/home/home.component';
 
 const routes: Routes = [
-  {path:' ', component: HomeComponent},
+  {path:'home', component: HomeComponent},
   {path:'carrinho', component: CarrinhoComponent},
   {path:'vendas', component: VendasComponent},
 ];
