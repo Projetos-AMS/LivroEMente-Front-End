@@ -28,7 +28,9 @@
                 <div class="slider-main">
                   <ng-container *ngFor="let product of products">
                     <div class="item">
-                      <div class="product-image"><img src="./assets/teste.jpg" alt=""></div>
+                      <div class="product-image">
+                        <img src="/assets/teste.jpg" alt="" />
+                      </div>
                       <div class="product-info">
                         <div class="product-text">
                           <div class="product-name">{{ product.name }}</div>
@@ -42,8 +44,8 @@
                 <div class="slider-fade"></div>
                 <div class="button-area">
                   <button type="button" class="prev" appPrev>Prev</button>
-                  <button type="button" class="next" appNext>
-                    <img src="..\assets\arrowR.png" alt="" />
+                  <button type="button" class="next" NextDirective>
+                    <img src="..\assets\arrowR.png" />
                   </button>
                 </div>
               </div>
@@ -60,7 +62,9 @@
                 <div class="slider-main">
                   <ng-container *ngFor="let product of products">
                     <div class="item">
-                      <div class="product-image"><img src="./assets/teste.jpg" alt=""></div>
+                      <div class="product-image">
+                        <img src="./assets/teste.jpg" alt="" />
+                      </div>
                       <div class="product-info">
                         <div class="product-text">
                           <div class="product-name">{{ product.name }}</div>
@@ -97,7 +101,9 @@
             <ng-container *ngFor="let product of products">
               <div class="category-design">
                 <input type="checkbox" name="category-text" class="categorys" />
-                <label class="category-text-class" for="category-text">{{product.name}}</label>
+                <label class="category-text-class" for="category-text">{{
+                  product.name
+                }}</label>
               </div>
             </ng-container>
           </div>
@@ -125,7 +131,9 @@
       <div class="products-general">
         <ng-container *ngFor="let product of products">
           <div class="item-general">
-            <div class="product-image"><img src="./assets/teste.jpg" alt=""></div>
+            <div class="product-image">
+              <img src="/assets/teste.jpg" alt="" />
+            </div>
             <div class="product-info">
               <div class="product-text">
                 <div class="product-name">{{ product.name }}</div>
@@ -139,3 +147,29 @@
     </div>
   </div>
 </main>
+<section class="page-footer">
+  <div class="footer-left">
+    <div class="footer-text">
+      <p class="footer-resources-title">RECURSOS</p>
+      <p class="footer-resources">
+        <a href="" class="resources">Vender Livros</a>
+        <a href="" class="resources">Comprar Livros</a>
+        <a href="" class="resources">Suporte</a>
+      </p>
+    </div>
+    <div class="footer-text">
+      <p class="footer-resources-title">INFORMAÇÕES</p>
+      <p class="footer-resources">
+        <a href="" class="resources">FAQ</a>
+        <a href="" class="resources">Sobre Nós</a>
+        <a href="" class="resources">Trabalhe Conosco</a>
+        <a href="" class="resources">Guidelines</a>
+      </p>
+    </div>
+  </div>
+  <div class="footer-right">
+    <a href="" class="social">Instagram</a>
+    <a href="" class="social">Facebook</a>
+    <a href="" class="social">X</a>
+  </div>
+</section>
