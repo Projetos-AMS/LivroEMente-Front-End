@@ -1,0 +1,119 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main{
+    padding: 4em 5em;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.product-display{
+    width: 100%;
+    height: 68vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-image{
+    width: 300px;
+    height: 100%;
+}
+
+.product-image{
+    display: flex;
+}
+
+.side-view{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 4em;
+}
+
+.image-view{
+    width: 90px;
+    height: 90px;
+}
+
+.product-info{
+    box-shadow: 0 0 3.5px rgba(0, 0, 0, 0.4);
+    width: 40vw;
+    padding: 1em;
+}
+
+h1{
+    font-size: clamp(.7em, 1.6vw, 4em);
+    font-weight: 700;
+}
+
+span{
+    color: rgb(153, 153, 153);
+    font-weight: 400;
+}
+
+.seller{
+    color: black;
+}
+
+.price-quantity{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+label{
+    font-size: 20px;
+}
+
+select selected{
+    background-color: rgb(101, 0, 0);
+}
+
+.price{
+    font-size: 1.6em;
+    font-weight: 700;
+    color: black;
+}
+
+p{
+    margin-top: 20px;
+    text-align: justify;
+}
+
+.option-button{
+    display: flex;
+    flex-direction: column;
+    padding: 3em 3em;
+}
+
+.add-to-cart{
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    background-color: #849a8a;
+    padding: 10px;
+    font-size: 17px;
+    font-weight: 600;
+    border: 0;
+    border-radius: 4px;
+}
+
+.buy{
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    background-color: #000000;
+    color: white;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    border: 0;
+    border-radius: 4px; 
+    margin-top: 15px;
+}
