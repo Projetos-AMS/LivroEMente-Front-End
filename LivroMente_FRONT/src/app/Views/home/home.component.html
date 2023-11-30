@@ -1,142 +1,175 @@
-<header class="menu">
-    <ul>
-        <a href="home"><img class="pequena" style="width: 80px; height: 80px; left: 50px; top: 6px; position: absolute; border-radius: 306px; backdrop-filter: blur(4px)" src="assets/Logo.png" /></a>
-        <div style="width: 310px; left: 144px; top: 20px; position: absolute; color: #82A8D9; font-size: 40px; font-family: Glory; font-weight: 200; word-wrap: break-word">Livro&Mente</div>
-        <li><a href="home">Home</a></li>
-        <li><a href="livros">Livros</a></li>
-        <li><a href="cadastro">Venda</a></li>
-        <li><a href="dominio">Livros Grátis</a></li>
-        <li><a href="categoria">Categoria</a></li>
-        <li><a href="carrinho">Carrinho</a></li>
-        <div class="bnt-login">Login</div>
-    </ul>
-    <h1>home</h1>
-</header>
-<header class="menu">
-    <ul>
-        <a href="home"><img class="pequena" style="width: 80px; height: 80px; left: 50px; top: 6px; position: absolute; border-radius: 306px; backdrop-filter: blur(4px)" src="assets/Logo.png" /></a>
-        <div style="width: 310px; left: 144px; top: 20px; position: absolute; color: #82A8D9; font-size: 40px; font-family: Glory; font-weight: 200; word-wrap: break-word">Livro&Mente</div>
-        <li><a href="home">Home</a></li>
-        <li><a href="livros">Livros</a></li>
-        <li><a href="vendas">Venda</a></li>
-        <li><a href="dominio">Livros Grátis</a></li>
-        <li><a href="categoria">Categoria</a></li>
-        <li><a href="carrinho">Carrinho</a></li>
-        <div class="bnt-login">Login</div>
-    </ul>
-    <h1>home</h1>
-</header>
-<!-- <section><app-header></app-header></section>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+<section><app-header></app-header></section>
+
 <main>
-    <div class="page-top">
-      <p class="main-text">
-        Seus <span class="color">Livros Favoritos</span> Em Um Único
-        <span class="color">Lugar</span>
-      </p>
-      <p class="description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur
-        metus quis mauris malesuada, quis iaculis augue vehicula. Maecenas ac nisl
-        eget elit bibend.
-      </p>
-      <div class="button-nav">
-        <button class="destaques">Destaques</button>
-        <button class="sale">Ofertas</button>
-      </div>
-      <img src="..\assets\reading_woman.png" alt="visual" />
+  <div class="page-top">
+    <p class="main-text">
+      Seus <span class="color">Livros Favoritos</span> Em Um Único
+      <span class="color">Lugar</span>
+    </p>
+    <p class="description">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur
+      metus quis mauris malesuada, quis iaculis augue vehicula. Maecenas ac nisl
+      eget elit bibend.
+    </p>
+    <div class="button-nav">
+      <button class="destaques">Destaques</button>
+      <button class="sale">Ofertas</button>
     </div>
-    <div class="page-mid">
-      <div class="products-principal">
-        <div class="product-card">
-          <p class="product-category">Destaques</p>
-          <div class="products-cards">
-            <section class="product">
-              <div class="container-fluid">
-                <div class="slider-wrap">
-                  <div class="slider-main">
-                    <ng-container *ngFor="let product of products">
-                      <div class="item">
-                        <div class="text">{{product.name}}</div>
+    <img src="..\assets\reading_woman.png" alt="visual" />
+  </div>
+  <div class="page-mid">
+    <div class="products-principal">
+      <div class="product-card">
+        <p class="product-category">Destaques</p>
+        <div class="products-cards">
+          <section class="product">
+            <div class="container-fluid">
+              <div class="slider-wrap">
+                <div class="slider-main">
+                  <ng-container *ngFor="let product of products">
+                    <div class="item">
+                      <div class="product-image">
+                        <img src="/assets/teste.jpg" alt="" />
                       </div>
-                    </ng-container>
-                  </div>
-                  <div class="slider-fade"></div>
-                  <div class="button-area">
-                    <button type="button" class="prev" appPrev>Prev</button>
-                    <button type="button" class="next" appNext><img src="..\assets\arrowR.png" alt=""></button>
-                  </div>
+                      <div class="product-info">
+                        <div class="product-text">
+                          <div class="product-name">{{ product.name }}</div>
+                          <div class="product-value">R${{ product.price }}</div>
+                        </div>
+                        <button class="product-buy">Buy</button>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="slider-fade"></div>
+                <div class="button-area">
+                  <button type="button" class="prev" title="teste" appNext>Prev</button>
+                  <button type="button" class="next" title="teste2" appPrev>
+                    <img src="..\assets\arrowR.png" />
+                  </button>
                 </div>
               </div>
-            </section>
-          </div>
+            </div>
+          </section>
         </div>
-        <div class="product-card">
-          <p class="product-category">Ofertas</p>
-          <div class="products-cards">
-            <section class="product">
-              <div class="container-fluid">
-                <div class="slider-wrap">
-                  <div class="slider-main">
-                    <ng-container *ngFor="let product of products">
-                      <div class="item">
-                        <div class="text">{{product.name}}</div>
+      </div>
+      <div class="product-card">
+        <p class="product-category">Ofertas</p>
+        <div class="products-cards">
+          <section class="product">
+            <div class="container-fluid">
+              <div class="slider-wrap">
+                <div class="slider-main">
+                  <ng-container *ngFor="let product of products">
+                    <div class="item">
+                      <div class="product-image">
+                        <img src="./assets/teste.jpg" alt="" />
                       </div>
-                    </ng-container>
-                  </div>
-                  <div class="button-area">
-                    <button type="button" class="prev" appPrev>Prev</button>
-                    <button type="button" class="next" appNext><img src="..\assets\arrowR.png" alt=""></button>
-                  </div>
+                      <div class="product-info">
+                        <div class="product-text">
+                          <div class="product-name">{{ product.name }}</div>
+                          <div class="product-value">R${{ product.price }}</div>
+                        </div>
+                        <button class="product-buy">Buy</button>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="slider-fade"></div>
+                <div class="button-area">
+                  <button type="button" class="prev" appPrev>Prev</button>
+                  <button type="button" class="next" appNext>
+                    <img src="..\assets\arrowR.png" alt="" />
+                  </button>
                 </div>
               </div>
-            </section>
-          </div>
-        </div>
-      </div>
-      <div class="offer-card">
-        <div class="left-card">
-        </div>
-        <div class="right-card"></div>
-      </div>
-      <div class="general-products">
-        <div class="filter">
-          <p class="general-books-title">Livros</p>
-          <div class="category">
-            <p class="category-title">Categoria</p>
-            <div class="category-input">
-              <ng-container *ngFor="let product of products">
-                <div class="category-design">
-                  <input type="checkbox" name="category-text" class="categorys">
-                  <label class="category-text-class" for="category-text">{{product.name}}</label>
-                </div>
-              </ng-container>
             </div>
-          </div>
-          <div class="category">
-            <p class="category-title">Editora</p>
-            <div class="category-input">
-              <ng-container *ngFor="let product of products">
-                <div class="category-design">
-                  <input type="checkbox" name="category-text" class="categorys">
-                  <label class="category-text-class" for="category-text">{{product.name}}</label>
-                </div>
-              </ng-container>
-            </div>
-          </div>
-          <div class="category">
-            <p class="category-title">Preço</p>
-            <div class="category-input">
-              <input type="range">
-            </div>
-          </div>
-        </div>
-        <div class="products-general">
-          <ng-container *ngFor="let product of products">
-            <div class="item-general">
-              <div class="text">{{product.name}}</div>
-            </div>
-          </ng-container>
+          </section>
         </div>
       </div>
     </div>
-  </main> -->
+    <div class="offer-card">
+      <div class="left-card"></div>
+      <div class="right-card"></div>
+    </div>
+    <div class="general-products">
+      <div class="filter">
+        <p class="general-books-title">Livros</p>
+        <div class="category">
+          <p class="category-title">Categoria</p>
+          <div class="category-input">
+            <ng-container *ngFor="let product of products">
+              <div class="category-design">
+                <input type="checkbox" name="category-text" class="categorys" />
+                <label class="category-text-class" for="category-text">{{
+                  product.name
+                }}</label>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="category">
+          <p class="category-title">Editora</p>
+          <div class="category-input">
+            <ng-container *ngFor="let product of products">
+              <div class="category-design">
+                <input type="checkbox" name="category-text" class="categorys" />
+                <label class="category-text-class" for="category-text">{{
+                  product.name
+                }}</label>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="category">
+          <p class="category-title">Preço</p>
+          <div class="category-input">
+            <input type="range" />
+          </div>
+        </div>
+      </div>
+      <div class="products-general">
+        <ng-container *ngFor="let product of products">
+          <div class="item-general">
+            <div class="product-image">
+              <img src="/assets/teste.jpg" alt="" />
+            </div>
+            <div class="product-info">
+              <div class="product-text">
+                <div class="product-name">{{ product.name }}</div>
+                <div class="product-value">R${{ product.price }}</div>
+              </div>
+              <button class="product-buy">Buy</button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</main>
+<section class="page-footer">
+  <div class="footer-left">
+    <div class="footer-text">
+      <p class="footer-resources-title">RECURSOS</p>
+      <p class="footer-resources">
+        <a href="" class="resources">Vender Livros</a>
+        <a href="" class="resources">Comprar Livros</a>
+        <a href="" class="resources">Suporte</a>
+      </p>
+    </div>
+    <div class="footer-text">
+      <p class="footer-resources-title">INFORMAÇÕES</p>
+      <p class="footer-resources">
+        <a href="" class="resources">FAQ</a>
+        <a href="" class="resources">Sobre Nós</a>
+        <a href="" class="resources">Trabalhe Conosco</a>
+        <a href="" class="resources">Guidelines</a>
+      </p>
+    </div>
+  </div>
+  <div class="footer-right">
+    <a href="" class="social">Instagram</a>
+    <a href="" class="social">Facebook</a>
+    <a href="" class="social">X</a>
+  </div>
+</section>
