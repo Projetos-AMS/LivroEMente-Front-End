@@ -8,16 +8,29 @@ import { CadastroLivroComponent } from './Views/cadastro-livro/cadastro-livro.co
 import { LoginComponent } from './Views/login/login.component';
 import { CadastroClienteComponent } from './Views/cadastro-cliente/cadastro-cliente.component';
 import { CadastroVendedorComponent } from './Views/cadastro-vendedor/cadastro-vendedor.component';
+import { AuthGuard } from './account/shared/auth.guard';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
-  {path:'carrinho', component: CarrinhoComponent},
-  {path:'vendas', component: VendasComponent},
-  {path:'detalhe', component: DetailComponent},
-  {path:'upload', component: CadastroLivroComponent},
-  {path:'login', component: LoginComponent},
-  {path:'cadastroCliente', component: CadastroClienteComponent},
-  {path:'cadastroVendedor', component: CadastroVendedorComponent},
+  // children: [
+    {path:'carrinho', component: CarrinhoComponent},
+    {path:'vendas', component: VendasComponent},
+    {path:'detalhe', component: DetailComponent},
+    {path:'cadastroCliente', component: CadastroClienteComponent},
+    {path:'cadastroVendedor', component: CadastroVendedorComponent},
+  // ]
+  { 
+    path:'upload', component: CadastroLivroComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+  path: '',
+  component: LoginComponent, 
+  children: [ 
+    { path:'', redirectTo:'login', pathMatch: 'full' },
+    {path:'login', component: LoginComponent},
+  ]
+  }
 ];
 
 @NgModule({
