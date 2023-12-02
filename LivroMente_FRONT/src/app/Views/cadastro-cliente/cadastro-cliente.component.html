@@ -13,36 +13,41 @@
     <div class="form-input">
       <div class="input-box">
         <p class="title">Cadastrar-se</p>
-        <form class="register">
+        <form class="register" (ngSubmit)="onSubmit()" #form="ngForm">
           <input
             class="inputNS"
             type="text"
             name="completeName"
             placeholder="Digite seu nome..."
+            [(ngModel)]="account.completeName"
           />
           <input
             class="inputNS"
             type="text"
             name="userName"
             placeholder="Digite seu Username..."
+            [(ngModel)]="account.userName"
           />
           <input
             class="inputNS"
             type="email"
             name="email"
             placeholder="Digite seu Email..."
+            [(ngModel)]="account.email"
           />
           <input
             class="inputNS"
             type="password"
             name="password"
             placeholder="Digite sua senha..."
+            [(ngModel)]="account.password"
           />
           <input
             class="inputNS"
             type="password"
             name="confirmPassword"
             placeholder="Confirme sua senha..."
+            [(ngModel)]="account.confirmPassword"
           />
           <button type="submit" class="buttonregister">Cadastrar-se</button>
           <div class="login-text">
