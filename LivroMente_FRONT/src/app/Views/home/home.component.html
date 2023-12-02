@@ -20,73 +20,39 @@
     <img src="..\assets\reading_woman.png" alt="visual" />
   </div>
   <div class="page-mid">
-    <div class="products-principal">
-      <div class="product-card">
-        <p class="product-category">Destaques</p>
-        <div class="products-cards">
-          <section class="product">
-            <div class="container-fluid">
-              <div class="slider-wrap">
-                <div class="slider-main">
-                  <ng-container *ngFor="let product of products">
-                    <div class="item">
-                      <div class="product-image">
-                        <img src="/assets/teste.jpg" alt="" />
-                      </div>
-                      <div class="product-info">
-                        <div class="product-text">
-                          <div class="product-name">{{ product.name }}</div>
-                          <div class="product-value">R${{ product.price }}</div>
-                        </div>
-                        <button class="product-buy">Buy</button>
-                      </div>
-                    </div>
-                  </ng-container>
-                </div>
-                <div class="slider-fade"></div>
-                <div class="button-area">
-                  <button type="button" class="prev" appPrev>Prev</button>
-                  <button type="button" class="next" NextDirective>
-                    <img src="..\assets\arrowR.png" />
-                  </button>
-                </div>
-              </div>
+    <div class="product-selection">
+      <div class="product-slider">
+        <div class="slider-title">
+          Nome teste
+        </div>
+        <div class="product">
+          <div class="product-card">
+            <div class="product-slider-image">
+              <img src="./assets/teste.jpg" alt="" class="product-card-image">
             </div>
-          </section>
+            <div class="product-info">
+              <a href="" class="product-card-name">Nome teste</a>
+              <div class="product-rate">5,0 XXXXX</div>
+              <div class="product-card-price">R$10,00</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="product-card">
-        <p class="product-category">Ofertas</p>
-        <div class="products-cards">
-          <section class="product">
-            <div class="container-fluid">
-              <div class="slider-wrap">
-                <div class="slider-main">
-                  <ng-container *ngFor="let product of products">
-                    <div class="item">
-                      <div class="product-image">
-                        <img src="./assets/teste.jpg" alt="" />
-                      </div>
-                      <div class="product-info">
-                        <div class="product-text">
-                          <div class="product-name">{{ product.name }}</div>
-                          <div class="product-value">R${{ product.price }}</div>
-                        </div>
-                        <button class="product-buy">Buy</button>
-                      </div>
-                    </div>
-                  </ng-container>
-                </div>
-                <div class="slider-fade"></div>
-                <div class="button-area">
-                  <button type="button" class="prev" appPrev>Prev</button>
-                  <button type="button" class="next" appNext>
-                    <img src="..\assets\arrowR.png" alt="" />
-                  </button>
-                </div>
-              </div>
+      <div class="product-slider">
+        <div class="slider-title">
+          Nome teste
+        </div>
+        <div class="product">
+          <div class="product-card">
+            <div class="product-slider-image">
+              <img src="./assets/teste.jpg" alt="" class="product-card-image">
             </div>
-          </section>
+            <div class="product-info">
+              <a href="" class="product-card-name">Nome teste</a>
+              <div class="product-rate">5,0 XXXXX</div>
+              <div class="product-card-price">R$10,00</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -94,84 +60,58 @@
       <div class="left-card"></div>
       <div class="right-card"></div>
     </div>
-    <div class="general-products">
+    <div class="product-filter">
       <div class="filter">
-        <p class="general-books-title">Livros</p>
-        <div class="category">
-          <p class="category-title">Categoria</p>
-          <div class="category-input">
-            <ng-container *ngFor="let product of products">
-              <div class="category-design">
-                <input type="checkbox" name="category-text" class="categorys" />
-                <label class="category-text-class" for="category-text">{{
-                  product.name
-                }}</label>
+        <span class="general-text">Outros livros</span>
+        <div class="main-filter-body">
+          <div class="filter-checkbox">
+            <div class="filter-name">Teste</div>
+            <div class="filter-option">
+              <div class="checkbox-container">
+                <input type="checkbox" id="checkbox-1">
+                <label for="checkbox-1" class="filter-checkbox">aa</label>
               </div>
-            </ng-container>
-          </div>
-        </div>
-        <div class="category">
-          <p class="category-title">Editora</p>
-          <div class="category-input">
-            <ng-container *ngFor="let product of products">
-              <div class="category-design">
-                <input type="checkbox" name="category-text" class="categorys" />
-                <label class="category-text-class" for="category-text">{{
-                  product.name
-                }}</label>
+              <div class="checkbox-container">
+                <input type="checkbox" id="checkbox-2">
+                <label for="checkbox-2" class="filter-checkbox">aa</label>
               </div>
-            </ng-container>
-          </div>
-        </div>
-        <div class="category">
-          <p class="category-title">Preço</p>
-          <div class="category-input">
-            <input type="range" />
-          </div>
-        </div>
-      </div>
-      <div class="products-general">
-        <ng-container *ngFor="let product of products">
-          <div class="item-general">
-            <div class="product-image">
-              <img src="/assets/teste.jpg" alt="" />
+              <div class="checkbox-container">
+                <input type="checkbox" id="checkbox-3">
+                <label for="checkbox-3" class="filter-checkbox">aa</label>
+              </div>
+              <div class="checkbox-container">
+                <input type="checkbox" id="checkbox-4">
+                <label for="checkbox-4" class="filter-checkbox">aa</label>
+              </div>
+              <div class="checkbox-container">
+                <input type="checkbox" id="checkbox-5">
+                <label for="checkbox-5" class="filter-checkbox">aa</label>
+              </div>
             </div>
-            <div class="product-info">
-              <div class="product-text">
-                <div class="product-name">{{ product.name }}</div>
-                <div class="product-value">R${{ product.price }}</div>
+            <div class="filter-range">
+              <div class="range-title">Preço</div>
+              <div class="range-input">
+                <input type="range" id="range-1">
+                <label for="range-1" class="range-label">aa</label>
               </div>
-              <button class="product-buy">Buy</button>
             </div>
           </div>
-        </ng-container>
+          <div class="product-filter-display">
+            <div class="product-filter-card">
+              <div class="product-filter-card-image">
+                <img src="./assets/teste.jpg" alt="" class="filter-card-image">
+              </div>
+              <div class="product-filter-card-info">
+                <a href="" class="product-card-name">Nome teste</a>
+                <div class="product-rate">5,0 XXXXX</div>
+                <div class="product-card-price">R$10,00</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </main>
-<section class="page-footer">
-  <div class="footer-left">
-    <div class="footer-text">
-      <p class="footer-resources-title">RECURSOS</p>
-      <p class="footer-resources">
-        <a href="" class="resources">Vender Livros</a>
-        <a href="" class="resources">Comprar Livros</a>
-        <a href="" class="resources">Suporte</a>
-      </p>
-    </div>
-    <div class="footer-text">
-      <p class="footer-resources-title">INFORMAÇÕES</p>
-      <p class="footer-resources">
-        <a href="" class="resources">FAQ</a>
-        <a href="" class="resources">Sobre Nós</a>
-        <a href="" class="resources">Trabalhe Conosco</a>
-        <a href="" class="resources">Guidelines</a>
-      </p>
-    </div>
-  </div>
-  <div class="footer-right">
-    <a href="" class="social">Instagram</a>
-    <a href="" class="social">Facebook</a>
-    <a href="" class="social">X</a>
-  </div>
-</section>
+
+<section><app-footer></app-footer></section>
