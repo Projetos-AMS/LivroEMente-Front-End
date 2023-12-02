@@ -6,3 +6,19 @@ body{
     box-sizing: border-box;
     font-family: 'Poppins';
 }
+
+/* #6A7B6F */
+
+::-webkit-scrollbar-track{
+  background-color: #fff;
+}
+
+::-webkit-scrollbar{
+  width: 10px;
+  background: #6A7B6F;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #6A7B6F;
+  border-radius: 10px;
+}

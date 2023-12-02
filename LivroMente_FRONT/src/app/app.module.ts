@@ -7,21 +7,23 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './Views/header/header.component';
 import { NextDirective } from './next.directive';
 import { PrevDirective } from './prev.directive';
+import { UploadService } from './upload.service';
+import { CadastroLivroComponent } from './Views/cadastro-livro/cadastro-livro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NextDirective,
     PrevDirective,
-    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CommonModule, 
+    CommonModule,
     HeaderComponent,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
