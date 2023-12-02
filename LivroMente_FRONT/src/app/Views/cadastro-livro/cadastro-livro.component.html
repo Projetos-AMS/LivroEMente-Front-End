@@ -1,59 +1,154 @@
 <header class="menu">
   <ul>
-      <a href="home"><img class="pequena" style="width: 80px; height: 80px; left: 50px; top: 6px; position: absolute; border-radius: 306px; backdrop-filter: blur(4px)" src="assets/Logo.png" /></a>
-      <div style="width: 310px; left: 144px; top: 20px; position: absolute; color: #82A8D9; font-size: 40px; font-family: Glory; font-weight: 200; word-wrap: break-word">Livro&Mente</div>
-      <li><a href="home">Home</a></li>
-      <li><a href="livros">Livros</a></li>
-      <li><a href="cadastro-livro">Venda</a></li>
-      <li><a href="dominio">Livros Grátis</a></li>
-      <li><a href="categoria">Categoria</a></li>
-      <li><a href="carrinho">Carrinho</a></li>
-      <div class="bnt-login">Login</div>
+    <a href="home"
+      ><img
+        class="pequena"
+        style="
+          width: 80px;
+          height: 80px;
+          left: 50px;
+          top: 6px;
+          position: absolute;
+          border-radius: 306px;
+          backdrop-filter: blur(4px);
+        "
+        src="assets/Logo.png"
+    /></a>
+    <div
+      style="
+        width: 310px;
+        left: 144px;
+        top: 20px;
+        position: absolute;
+        color: #82a8d9;
+        font-size: 40px;
+        font-family: Glory;
+        font-weight: 200;
+        word-wrap: break-word;
+      "
+    >
+      Livro&Mente
+    </div>
+    <li><a href="home">Home</a></li>
+    <li><a href="livros">Livros</a></li>
+    <li><a href="cadastro-livro">Venda</a></li>
+    <li><a href="dominio">Livros Grátis</a></li>
+    <li><a href="categoria">Categoria</a></li>
+    <li><a href="carrinho">Carrinho</a></li>
+    <div class="bnt-login">Login</div>
   </ul>
 </header>
 
-<div class="img-pequena"><img src="assets/UploadIMG.png" alt=""></div>
+  <div class="page-top">
+    <div class="text">
+      <div class="main-text">
+        <span class="color">Bem vindo!!</span> ao Painel de
+      <span class="color">Vendedor</span>
+      </div>
+      <div class="description">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, alias excepturi porro dolores sed eum praesentium culpa quos adipisci repellat sint in velit fuga architecto. Commodi vero quaerat perferendis expedita.
+      </div>
+    </div>
+    <div class="img">
+      <img src="./assets/livraria.png" alt="">
+    </div>
+  </div>
+  <div class="container">
+    <div class="title">Cadastrar Livros</div>
+    <form action="modal">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details">Título:</span>
+          <input type="text" placeholder="Digite o nome do livro" required />
+        </div>
+        <div class="input-box">
+          <span class="details">Autor:</span>
+          <input type="text" placeholder="Digite o nome do autor " required />
+        </div>
+        <div class="input-box">
+          <span class="details">Sinopse:</span>
+          <input type="text" placeholder="Escreva uma breve sinopse" required />
+        </div>
+        <div class="input-box">
+          <span class="details">Quantidade:</span>
+          <input
+            type="text"
+            placeholder="Digite a quantidade de livros"
+            required
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Número de páginas:</span>
+          <input
+            type="text"
+            placeholder="Digite o número das páginas"
+            required
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Editora:</span>
+          <input type="text" placeholder="Digite o nome da editora" required />
+        </div>
+        <div class="input-box">
+          <span class="details">Valor:</span>
+          <input type="text" placeholder="Digite o valor do livro" required />
+        </div>
+        <div class="input-box">
+          <span class="details">Idioma:</span>
+          <input type="text" placeholder="Digite o idioma" required />
+        </div>
+        <div class="input-box">
+          <span class="details">Classificação indicativa</span>
+          <input
+            type="text"
+            placeholder="Digite a faixa etária do livro"
+            required
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Estado do livro:</span>
+          <select name="estado" id="estado">
+            <option value="1">Novo</option>
+            <option value="2">Usado</option>
+          </select>
+        </div>
+        <div class="input-box">
+          <span class="details">Gênero do livro:</span>
+          <select name="genero" id="genero">
+            <option value="1">Romance</option>
+            <option value="2">Fantasia</option>
+            <option value="3">Thiller</option>
+            <option value="4">Ficção</option>
+            <option value="5">Mistério</option>
+            <option value="6">Infantil</option>
+            <option value="7">Drama</option>
+          </select>
+        </div>
+        <div class="button">
+          <!-- <input type="file" (change)="onFileSelected($event)" value="Capa">
+          <button (click)="uploadFile()">Upload</button> -->
+        </div>
+      </div>
+      <div class="button">
+        <input type="submit" value="Cadastrar">
+      </div>
+    </form>
+  </div>
 
-<h1>Livro&Mente</h1>
-
-<form class="form-upload">
-  <h1>Responda as seguintes perguntas</h1>
-  <label for="fname">Titulo:</label>
-  <input type="text" id="fname" name="fname">
-
-  <label for="lname">Autor:</label>
-  <input type="text" id="lname" name="lname">
-
-  <label for="fname">Sinopse:</label>
-  <input type="text" id="fname" name="fname">
-
-  <label for="lname">Quantidade:</label>
-  <input type="text" id="lname" name="lname">
-
-  <label for="fname">Número de Páginas:</label>
-  <input type="text" id="fname" name="fname">
-
-  <label for="lname">Editora:</label>
-  <input type="text" id="lname" name="lname">
-
-  <label for="lname">ISBN:</label>
-  <input type="text" id="lname" name="lname">
-
-  <label for="lname">Editora:</label>
-  <input type="text" id="lname" name="lname">
-
-  <label for="lname">Valor:</label>
-  <input type="text" id="lname" name="lname">
-
-  <label for="lname">Idioma:</label>
-  <input type="text" id="lname" name="lname">
-
-  <label for="lname">Classificação Indicativa:</label>
-  <input type="text" id="lname" name="lname">
-
-  <label for="lname">Estado do livro:</label>
-  <input type="text" id="lname" name="lname">
-
-  <label for="lname">Upload da Capa do Livro:</label>
-  <button type="menu">ENVIAR</button>
-</form>
+  <!-- <div class="modal" id="cadastro" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">ATENÇÃO!!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis maiores sequi, voluptatibus magni nam numquam et, optio nemo sit eum corrupti? Accusamus odio provident dolore laudantium hic quasi nulla rerum.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Continuar</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
