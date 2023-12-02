@@ -13,10 +13,10 @@
     <div class="form-input">
       <div class="input-box">
         <p class="title">Entrar</p>
-        <form  class="register">
-            <input class="inputNS" type="text" name="email"  placeholder="Digite seu email..." required>
-            <input class="inputNS" type="password" name="password"  placeholder="Digite sua senha..." required>
-          <button type="submit" class="buttonregister" >Entrar</button>
+        <form (ngSubmit)="onSubmit()" #form="ngForm" class="register" >
+            <input class="inputNS" type="text" name="email"   [(ngModel)]="login.email"placeholder="Digite seu email..." required>
+            <input class="inputNS" type="password" [(ngModel)]="login.password" name="password"  placeholder="Digite sua senha..." required>
+          <button type="submit" class="buttonregister"  [disabled]="form.form.invalid" >Entrar</button>
           <div class="login-text">
             <p>
               Não possui uma conta? <a href="/cadastroCliente" class="gotologin">Clique aqui.</a>
