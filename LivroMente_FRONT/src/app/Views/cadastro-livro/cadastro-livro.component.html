@@ -59,27 +59,27 @@
       <div class="user-details">
         <div class="input-box">
           <span class="details">Título:</span>
-          <input 
-            type="text" 
+          <input
+            type="text"
             placeholder="Digite o nome do livro"
             name="Title"
             [(ngModel)]="book.Title" required />
         </div>
         <div class="input-box">
           <span class="details">Autor:</span>
-          <input 
-            type="text" 
+          <input
+            type="text"
             placeholder="Digite o nome do autor "
-            name="Author" 
-            [(ngModel)]="book.Author" 
+            name="Author"
+            [(ngModel)]="book.Author"
             required />
         </div>
         <div class="input-box">
           <span class="details">Sinopse:</span>
-          <input 
-            type="text" 
-            placeholder="Escreva uma breve sinopse" 
-            name="Synopsis" 
+          <input
+            type="text"
+            placeholder="Escreva uma breve sinopse"
+            name="Synopsis"
             [(ngModel)]="book.Synopsis" required />
         </div>
         <div class="input-box">
@@ -87,7 +87,7 @@
           <input
             type="number" step="1"
             placeholder="Digite a quantidade de livros"
-            name="Quantity" 
+            name="Quantity"
             [(ngModel)]="book.Quantity"
             required
           />
@@ -97,7 +97,7 @@
           <input
             type="number" step="1"
             placeholder="Digite o número das páginas"
-            name="Pages" 
+            name="Pages"
             [(ngModel)]="book.Pages"
             required
           />
@@ -105,29 +105,29 @@
         <div class="input-box">
           <span class="details">Editora:</span>
           <input
-            type="text" 
+            type="text"
             placeholder="Digite o nome da editora"
-            name="PublishingCompany" 
+            name="PublishingCompany"
             [(ngModel)]="book.PublishingCompany"
             required />
         </div>
         <div class="input-box">
           <span class="details">Valor:</span>
-          <input 
-            type="number" 
-            step="0.01" 
-            placeholder="Digite o valor do livro" 
-            name="Value" 
-            [(ngModel)]="book.Value" 
+          <input
+            type="number"
+            step="0.01"
+            placeholder="Digite o valor do livro"
+            name="Value"
+            [(ngModel)]="book.Value"
             required />
         </div>
         <div class="input-box">
           <span class="details">Idioma:</span>
-          <input 
-            type="text" 
+          <input
+            type="text"
             placeholder="Digite o idioma"
-            name="Language"  
-            [(ngModel)]="book.Language" 
+            name="Language"
+            [(ngModel)]="book.Language"
             required />
         </div>
         <div class="input-box">
@@ -135,7 +135,7 @@
           <input
             type="number"
             placeholder="Digite a faixa etária do livro"
-            name="Classification" 
+            name="Classification"
             [(ngModel)]="book.Classification"
             required
           />
@@ -153,7 +153,8 @@
              <option  *ngFor="let categoria of categories"  [value]="categoria.id">{{categoria.description}}</option>
            </select>
         </div>
-        <div class="button">
+        <div class="input-upload">
+          <span class="details">Clique para fazer upload da capa:</span>
           <input type="file" (change)="onFileSelected($event)" value="Capa">
           <!-- <button (click)="uploadFile()">Upload</button> -->
         </div>

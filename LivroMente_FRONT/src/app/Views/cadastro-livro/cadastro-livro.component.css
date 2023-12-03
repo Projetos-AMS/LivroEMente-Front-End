@@ -227,3 +227,8 @@ select{
   font-size: 13px;
 }
 
+input{
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}

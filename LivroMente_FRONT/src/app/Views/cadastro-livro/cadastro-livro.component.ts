@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UploadService } from 'src/app/upload.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-cadastro-livro',
@@ -14,10 +15,12 @@ import { FormsModule } from '@angular/forms';
   <input type="file" (change)="onFileSelected($event)">
   <button (click)="uploadFile()">Upload</button>
   `,
+
 })
 export class CadastroLivroComponent  implements OnInit{
 
-   book = 
+
+   book =
    {
       Title: '',
       Author:'',
@@ -34,8 +37,11 @@ export class CadastroLivroComponent  implements OnInit{
       UrlBook: '',
       UrlImg: ''
     };
-  
+
    categories : any;
+  router: any;
+  showError: boolean | undefined;
+  showAcerto: boolean | undefined;
 
   ngOnInit() {
     this.getCategories();
@@ -45,10 +51,10 @@ export class CadastroLivroComponent  implements OnInit{
   constructor(private uploadService: UploadService, private http : HttpClient) {}
 
   async postBook(){
-    try 
+    try
     {
       await this.uploadFile();
-       
+
       const result = this.http.post<any>('http://localhost:5170/api/Book',this.book).subscribe();
       console.log(result);
       console.log("Sucesso");
@@ -59,7 +65,7 @@ export class CadastroLivroComponent  implements OnInit{
         if (error.status === 400) {
           // Erro de validação
           console.error('Erro de validação:', error.error);
-  
+
           // Exiba mensagens de erro ao usuário
           if (error.error && error.error.errors) {
             const validationErrors = error.error.errors;
@@ -90,31 +96,30 @@ export class CadastroLivroComponent  implements OnInit{
 
   getCategories(){
     this.http.get<any[]>('http://localhost:5170/api/CategoryBook')
-    .subscribe(categories => { this.categories = categories; });  
+    .subscribe(categories => { this.categories = categories; });
   }
 
   uploadFile(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
     if (this.selectedFile) {
       this.uploadService.uploadFile(this.selectedFile).subscribe(
-        (link: any) => 
+        (link: any) =>
         {
            this.book.UrlImg = link;
            console.log('Link do arquivo:', link);
-           resolve(); 
+           resolve();
         },
-        (error: any) => 
+        (error: any) =>
         {
            console.error('Erro ao fazer upload:', error);
-           resolve(); 
+           resolve();
         }
       );
-    } else 
+    } else
       {
          console.warn('Nenhum arquivo selecionado.');
-         resolve(); 
+         resolve();
       }
       });
     }
-
 }
