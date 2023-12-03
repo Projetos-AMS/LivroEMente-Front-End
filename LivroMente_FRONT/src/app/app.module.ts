@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { UploadService } from './upload.service';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,7 +27,7 @@ import { PrevDirective } from './prev.directive';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [UploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

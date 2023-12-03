@@ -15,6 +15,8 @@ export class UploadService {
     const formData: FormData = new FormData();
     formData.append('arquivo', file, file.name);
 
-    return this.http.post<string>(this.apiUrl, formData);
+    // return this.http.post<string>(this.apiUrl, formData);
+    return this.http.post(this.apiUrl, formData, { responseType: 'text' });
+    // Configuração do responseType para 'text' para lidar com a resposta como uma string
   }
 }
