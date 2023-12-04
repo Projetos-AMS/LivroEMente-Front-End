@@ -1,13 +1,14 @@
-import { Component, Directive, ElementRef, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HeaderComponent } from '../header/header.component';
-import { NextDirective } from 'src/app/next.directive';
-import { PrevDirective } from 'src/app/prev.directive';
+import { Component, Directive, ElementRef, NgModule, OnInit } from '@angular/core';
+import { CommonModule, DecimalPipe } from '@angular/common';
+import { HeaderComponent } from '../components/header/header.component';
+import { FooterComponent } from '../components/footer/footer.component';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HeaderComponent],
+  imports: [CommonModule, HeaderComponent, FooterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -16,54 +17,37 @@ import { PrevDirective } from 'src/app/prev.directive';
 //   selector: '[appNext],[appPrev]'
 // })
 
-export class HomeComponent {
-  
-  constructor(private el: ElementRef) {
-    console.log(this.el.nativeElement)
+export class HomeComponent implements OnInit{
+
+  Books : any
+
+  constructor(private http:HttpClient, private router:Router){
+    
   }
 
-  nextFunc(){
-    var elm = this.el.nativeElement.parentElement.parentElement.children[0];
-    var item = elm.getElementsByClassName("item");
-    elm.append(item[0]);
-    console.log(item)
+  ngOnInit(): void {
+    this.http.get('http://localhost:5170/api/Book').subscribe(Books => {this.Books = Books, console.log(Books)});
   }
 
-  prevFunc(){
-    var elm = this.el.nativeElement.parentElement.parentElement.children[0];
-    var item = elm.getElementsByClassName("item");
-    elm.prepend(item[item.length - 1]);
-  }
-  
-  products = [
-    {
-      name: 'Livro Rosa',
-      price: '10'
-    },
-    {
-      name: 'teste2'
-    },
-    {
-      name: 'teste3'
-    },
-    {
-      name: 'teste4'
-    },
-    {
-      name: 'teste5'
-    },
-    {
-      name: 'teste6'
-    },
-    {
-      name: 'teste7'
-    },
-    {
-      name: 'teste8'
-    },
-    {
-      name: 'teste9'
-    }
-    ]
+  Book = {
+    Title: '',
+    Author:'',
+    Synopsis: '',
+    Quantity: 0,
+    Pages: 0,
+    PublishingCompany:'Vendedor',
+    Isbn: '',
+    Value:0.0,
+    Language:'',
+    Classification:0,
+    IsActive: true,
+    CategoryId: '',
+    UrlBook: '',
+    UrlImg: ''
+  }
 
+  public abrirProduto() {
+    sessionStorage.setItem('produtoDetalhe', JSON.stringify(this.Book));
+    this.router.navigate(['/detalhe']);
+  }
 }
