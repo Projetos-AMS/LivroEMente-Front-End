@@ -2,7 +2,6 @@
 
 *{
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 main {
@@ -20,6 +19,7 @@ main {
 
 .page-top {
   display: flex;
+  justify-content: center;
   width: 100%;
   height: 400px;
   margin-top: 40px;
@@ -44,6 +44,10 @@ main {
     margin: 0;
     width: 100%;
     height: 100%;
+  }
+
+  & span{
+    color: #849a8a;
   }
 }
 
@@ -141,6 +145,7 @@ main {
   font-weight: 700;
   text-decoration: none;
   word-wrap: break-word;
+  cursor: pointer;
 }
 
 .product-card-name:hover{
@@ -206,9 +211,11 @@ main {
   width: 58em;
 }
 
-.filter-checkbox{
+.filter-checkbox, .filter-checkbox:checked{
+  color: black;
   width: 20em;
 }
+
 
 .filter-name{
   color: black;

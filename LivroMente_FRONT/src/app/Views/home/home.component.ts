@@ -1,4 +1,10 @@
-import { Component, Directive, ElementRef, NgModule, OnInit } from '@angular/core';
+import {
+  Component,
+  Directive,
+  ElementRef,
+  NgModule,
+  OnInit,
+} from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { HeaderComponent } from '../components/header/header.component';
 import { FooterComponent } from '../components/footer/footer.component';
@@ -16,38 +22,55 @@ import { Router } from '@angular/router';
 // @Directive({
 //   selector: '[appNext],[appPrev]'
 // })
+export class HomeComponent implements OnInit {
+  Books: any;
+  categories: any;
 
-export class HomeComponent implements OnInit{
+  constructor(private http: HttpClient, private router: Router) {}
 
-  Books : any
-
-  constructor(private http:HttpClient, private router:Router){
-    
-  }
+  // comprar(produto: Book) {
+  //   this.carrinhoCompra.adicionar(produto);
+  // }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:5170/api/Book').subscribe(Books => {this.Books = Books, console.log(Books)});
+    this.http.get('http://localhost:5170/api/Book').subscribe((Books) => {
+      (this.Books = Books), console.log(Books);
+    });
+
+    // this.carrinhoCompra = new CarrinhoComponent();
+
+    var produtoDetalhe = sessionStorage.getItem('produtoDetalhe');
+    if (produtoDetalhe) {
+      this.Book = JSON.parse(produtoDetalhe);
+    }
+
+    this.getCategories();
   }
+
+  getCategories(){
+    this.http.get<any[]>('http://localhost:5170/api/CategoryBook')
+    .subscribe(categories => { this.categories = categories; });  
+  }
 
   Book = {
     Title: '',
-    Author:'',
+    Author: '',
     Synopsis: '',
     Quantity: 0,
     Pages: 0,
-    PublishingCompany:'Vendedor',
+    PublishingCompany: 'Vendedor',
     Isbn: '',
-    Value:0.0,
-    Language:'',
-    Classification:0,
+    Value: 0.0,
+    Language: '',
+    Classification: 0,
     IsActive: true,
     CategoryId: '',
     UrlBook: '',
-    UrlImg: ''
-  }
+    UrlImg: '',
+  };
 
-  public abrirProduto() {
-    sessionStorage.setItem('produtoDetalhe', JSON.stringify(this.Book));
+  public abrirProduto(Book = this.Book) {
+    sessionStorage.setItem('produtoDetalhe', JSON.stringify(Book));
     this.router.navigate(['/detalhe']);
-  }
+  }
 }
