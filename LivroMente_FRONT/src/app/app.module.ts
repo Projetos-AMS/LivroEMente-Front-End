@@ -8,9 +8,9 @@ import { UploadService } from './upload.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './Views/header/header.component';
 import { NextDirective } from './next.directive';
 import { PrevDirective } from './prev.directive';
+import { HeaderComponent } from './Views/components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +23,8 @@ import { PrevDirective } from './prev.directive';
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    HeaderComponent,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [UploadService],
   bootstrap: [AppComponent]
