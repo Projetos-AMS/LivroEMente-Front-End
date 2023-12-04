@@ -9,7 +9,7 @@
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, eveniet omnis aliquam delectus quam in suscipit voluptate, soluta laboriosam amet ducimus, laborum quas debitis eum dolore dignissimos dolor. Consequuntur, quae.</p>
       </div>
       <div class="top-buttons">
-      
+
       </div>
     </div>
     <div class="right-content">
@@ -20,7 +20,7 @@
     <div class="product-selection">
       <div class="product-slider">
         <div class="slider-title">
-          Nome teste
+          Romance
         </div>
         <div class="product">
           <ng-container *ngFor="let book of Books">
@@ -39,13 +39,13 @@
       </div>
       <div class="product-slider">
         <div class="slider-title">
-          Nome teste
+          Livros Grátis
         </div>
         <div class="product">
           <ng-container *ngFor="let book of Books">
             <div class="product-card">
               <div class="product-slider-image">
-                <img src="{{book.UrlImg}}" alt="" class="product-card-image">
+                <img src="{{book.urlImg}}" alt="" class="product-card-image">
               </div>
               <div class="product-info">
                 <a href="/detalhe" class="product-card-name" (click)="abrirProduto()">{{book.title}}</a>
@@ -85,7 +85,7 @@
             <ng-container *ngFor="let book of Books">
               <div class="product-filter-card">
                 <div class="product-filter-card-image">
-                  <img src="{{book.UrlImg}}" alt="" class="filter-card-image">
+                  <img src="{{book.urlImg}}" alt="" class="filter-card-image">
                 </div>
                 <div class="product-filter-card-info">
                   <a href="/detalhe" class="product-card-name" (click)="abrirProduto()">{{book.title}}</a>

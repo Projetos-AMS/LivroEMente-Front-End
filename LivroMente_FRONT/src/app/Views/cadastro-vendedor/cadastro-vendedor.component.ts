@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AccountService } from 'src/app/account/shared/account.service';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-vendedor',
@@ -20,7 +21,7 @@ export class CadastroVendedorComponent implements OnInit{
     role:'Vendedor'
   }
 
-  constructor(private accountService : AccountService){}
+  constructor(private accountService : AccountService,  private router: Router){}
   ngOnInit() {
   }
 
@@ -29,6 +30,7 @@ export class CadastroVendedorComponent implements OnInit{
       const result = await this.accountService.createdAccount(this.account);
       console.log(result);
       console.log("Sucesso");
+      this.router.navigate(['/login']);
     }catch(error){
       console.error(error);
     }

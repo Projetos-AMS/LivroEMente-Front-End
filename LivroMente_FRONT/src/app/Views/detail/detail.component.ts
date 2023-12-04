@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from '../components/header/header.component';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -8,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, FontAwesomeModule],
+  imports: [CommonModule, HeaderComponent],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.css',
 })
