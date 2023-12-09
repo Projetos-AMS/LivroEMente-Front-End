@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UploadService } from 'src/app/upload.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import Swal from 'sweetalert2'
+//import Swal from 'sweetalert2'
 import { HeaderComponent } from '../components/header/header.component';
 
 @Component({

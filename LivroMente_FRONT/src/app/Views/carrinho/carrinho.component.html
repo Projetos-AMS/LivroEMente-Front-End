@@ -16,17 +16,17 @@
                            </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let book of listaBook">
                                 <td>
                                     <div class="product">
-                                        <img src="https://picsum.photos/100/140" alt="">
+                                        <img src="{{book.urlImg}}" alt="" class="pequena">
                                         <div class="info">
-                                        <div class="name">Nome do produto</div>
-                                        <div class="description">Descrição</div>
+                                        <div class="name">{{book.title}}</div>
+                                        <div class="description">teste</div>
                                     </div>
                                     </div>
                                 </td>
-                                <td>R$ 100,00</td>
+                                <td>R$ {{book.value}}</td>
                                 <td>
                                     <div class="quantity">
                                         <button><i class='bx bx-minus'></i></button>
@@ -36,7 +36,7 @@
                                 </td>
                                 <td>R$ 100,00</td>
                                 <td>
-                                    <button class="remove"><i class='bx bx-x'></i></button>
+                                    <button class="remove" (click)="remover(book)"><i class='bx bx-x'></i></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -51,7 +51,7 @@
                     </div>
                     <footer></footer>
                 </div>
-                <a href="pagamento"><button class="box-button">Finalizar Compra</button></a>
+                <a href="pagamento"><button class="box-button" (click)="comprar()">Finalizar Compra</button></a>
             </aside>
             </div>
         </main>

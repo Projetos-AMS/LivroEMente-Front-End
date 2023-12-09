@@ -23,6 +23,7 @@ export class DetailComponent {
 
 
   Book = {
+    id: '',
     title: '',
     author: '',
     synopsis: '',
@@ -48,6 +49,10 @@ export class DetailComponent {
     this.http.get('http://localhost:5170/api/Book').subscribe((Books) => {
       (this.Books = Books), console.log(Books);
     });
+    this.carrinhoCompra = new CarrinhoComponent();
+  }
+  comprar(book = this.Book){
+    this.carrinhoCompra.adicionar(book);
   }
 
   livroGratis(){
