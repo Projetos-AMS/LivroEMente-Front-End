@@ -14,7 +14,6 @@ main {
 }
 
 .product-display {
-  width: 66.5em;
   height: 25em;
   display: flex;
   justify-content: space-between;
@@ -291,7 +290,7 @@ select selected {
 }
 
 .card-btn-buy:hover{
-  
+
 } */
 
 /* .product {

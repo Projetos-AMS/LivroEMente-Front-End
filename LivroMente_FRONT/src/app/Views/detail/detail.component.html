@@ -22,9 +22,11 @@
                 </div>
             </div>
             <p>{{Book.synopsis}}</p>
-            <div class="option-button">
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-                <button class="buy">Comprar</button>
+            <div class="option-button" >
+              <button *ngIf="livroGratis()">t</button>
+                <button class="add-to-cart"  *ngIf="botaoCarrinho">Adicionar ao Carrinho</button>
+                <button class="buy" *ngIf="botaoComprar">Comprar</button>
+                <a href="{{Book.urlBook}}" target="_blank" id="idDoBotao" *ngIf="botaoGratis"><button  class="add-to-cart" >Abrir link</button></a>
             </div>
         </div>
     </div>

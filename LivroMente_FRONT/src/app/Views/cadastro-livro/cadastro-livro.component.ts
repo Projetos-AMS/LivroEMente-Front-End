@@ -4,11 +4,12 @@ import { UploadService } from 'src/app/upload.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2'
+import { HeaderComponent } from '../components/header/header.component';
 
 @Component({
   selector: 'app-cadastro-livro',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HeaderComponent],
   templateUrl: './cadastro-livro.component.html',
   styleUrl: './cadastro-livro.component.css',
   template: `
@@ -89,6 +90,8 @@ export class CadastroLivroComponent  implements OnInit{
       }
     }
   }
+
+
 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];

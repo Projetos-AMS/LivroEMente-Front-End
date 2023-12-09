@@ -30,7 +30,7 @@ export class CadastroVendedorComponent implements OnInit{
       const result = await this.accountService.createdAccount(this.account);
       console.log(result);
       console.log("Sucesso");
-      this.router.navigate(['/login']);
+      this.router.navigate(['login']);
     }catch(error){
       console.error(error);
     }

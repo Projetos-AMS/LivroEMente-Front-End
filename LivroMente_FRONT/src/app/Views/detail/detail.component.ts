@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../components/header/header.component';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { CarrinhoComponent } from '../carrinho/carrinho.component';
 
 @Component({
   selector: 'app-detail',
@@ -13,8 +14,13 @@ import { Router } from '@angular/router';
 })
 export class DetailComponent {
   Books : any;
+  botaoGratis!:boolean;
+  botaoComprar !: boolean;
+  botaoCarrinho!:boolean;
+  public carrinhoCompra!: CarrinhoComponent;
 
   constructor(private http: HttpClient, private router: Router) {}
+
 
   Book = {
     title: '',
@@ -34,6 +40,7 @@ export class DetailComponent {
   };
 
   ngOnInit(): void {
+
     var produtoDetalhe = sessionStorage.getItem('produtoDetalhe');
     if (produtoDetalhe) {
       this.Book = JSON.parse(produtoDetalhe);
@@ -42,4 +49,20 @@ export class DetailComponent {
       (this.Books = Books), console.log(Books);
     });
   }
+
+  livroGratis(){
+    if(this.Book.urlBook != ''){
+      this.botaoGratis = true;
+      this.botaoComprar= false;
+      this.botaoCarrinho=false;
+    }
+    else{
+      this.botaoGratis = false;
+      this.botaoComprar= true;
+      this.botaoCarrinho=true;
+    }
+
+  }
+
+
 }
