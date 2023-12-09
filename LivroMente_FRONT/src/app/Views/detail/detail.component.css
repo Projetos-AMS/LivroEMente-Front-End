@@ -91,6 +91,17 @@ select selected {
   height: 100px;
   margin-top: 20px;
   text-align: justify;
+
+  /* Propriedades gerais para controle de texto */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 25em;
+
+  /* Propriedades específicas do WebKit para limitar o número de linhas */
+  /* display: -webkit-box; */
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 .option-button {

@@ -22,16 +22,16 @@
                                         <img src="{{book.urlImg}}" alt="" class="pequena">
                                         <div class="info">
                                         <div class="name">{{book.title}}</div>
-                                        <div class="description">teste</div>
+                                        <div class="description">{{book.synopsis}}</div>
                                     </div>
                                     </div>
                                 </td>
                                 <td>R$ {{book.value}}</td>
                                 <td>
                                     <div class="quantity">
-                                        <button><i class='bx bx-minus'></i></button>
-                                        <span>2</span>
-                                        <button><i class='bx bx-plus'></i></button>
+                                        <button (click)="diminuirQuantidade()">-</button>
+                                        <span>{{ total }}</span>
+                                        <button (click)="aumentarQuantidade()">+</button>
                                     </div>
                                 </td>
                                 <td>R$ 100,00</td>
@@ -46,7 +46,7 @@
                 <div class="box">
                     <!-- <header></header> -->
                     <div class="info">
-                        <div><span>Sub-total</span><span>R$ 100,00</span></div>
+                        <div><span>Sub-total</span><span>R$ {{totalGeral}}</span></div>
                         <div><span>Frete</span><span>Gratuito</span></div>
                     </div>
                     <footer></footer>
