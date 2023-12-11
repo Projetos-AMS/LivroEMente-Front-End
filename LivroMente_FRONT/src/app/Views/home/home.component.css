@@ -106,7 +106,6 @@ main {
 
 .product{
   display: flex;
-  overflow: hidden;
   gap: 2em ;
 }
 

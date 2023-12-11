@@ -132,6 +132,10 @@ img{
 .description{
     color: #0E0ADF;
     cursor: pointer;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+    max-width:250px;
 }
 
 .remove{

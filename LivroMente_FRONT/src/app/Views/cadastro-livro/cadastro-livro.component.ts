@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { UploadService } from 'src/app/upload.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import Swal from 'sweetalert2'
+import { HeaderComponent } from '../components/header/header.component';
+import { Router } from '@angular/router';
+import Swal  from 'sweetalert2';
 
 @Component({
   selector: 'app-cadastro-livro',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HeaderComponent],
   templateUrl: './cadastro-livro.component.html',
   styleUrl: './cadastro-livro.component.css',
   template: `
@@ -18,8 +20,6 @@ import Swal from 'sweetalert2'
 
 })
 export class CadastroLivroComponent  implements OnInit{
-
-
    book =
    {
       Title: '',
@@ -39,25 +39,29 @@ export class CadastroLivroComponent  implements OnInit{
     };
 
    categories : any;
-  router: any;
-  showError: boolean | undefined;
-  showAcerto: boolean | undefined;
+   showError: boolean | undefined;
+   showAcerto: boolean | undefined;
 
   ngOnInit() {
     this.getCategories();
   }
   selectedFile: File | undefined;
 
-  constructor(private uploadService: UploadService, private http : HttpClient) {}
+  constructor(private uploadService: UploadService, private http : HttpClient, private router: Router) {}
 
   async postBook(){
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Livro cadastrado",
+      showConfirmButton: false,
+      timer: 2000
+    });
     try
     {
       await this.uploadFile();
-
-      const result = this.http.post<any>('http://localhost:5170/api/Book',this.book).subscribe();
-      console.log(result);
-      console.log("Sucesso");
+      this.http.post<any>('http://localhost:5170/api/Book',this.book).subscribe();
+      this.router.navigate(['/'])
     }
     catch(error){
       if (error instanceof HttpErrorResponse) {
@@ -89,6 +93,8 @@ export class CadastroLivroComponent  implements OnInit{
       }
     }
   }
+
+
 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];

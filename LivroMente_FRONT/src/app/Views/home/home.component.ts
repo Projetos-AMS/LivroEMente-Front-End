@@ -53,6 +53,7 @@ export class HomeComponent implements OnInit {
   }
 
   Book = {
+    Id: '',
     Title: '',
     Author: '',
     Synopsis: '',

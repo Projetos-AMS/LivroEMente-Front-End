@@ -61,3 +61,19 @@
 .signup:active {
   background: #425146;
 }
+
+.nav-bar{
+  font-weight: 800;
+  font-size: 15px;
+  display: flex;
+  cursor: pointer;
+  gap: 1em;
+  & a{
+    text-decoration: none;
+    color: #000;
+  }
+}
+.nav-bar a:hover{
+  color: #425146;
+  transform: scale(110%);
+}
