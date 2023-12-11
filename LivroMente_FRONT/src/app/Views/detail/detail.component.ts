@@ -4,6 +4,7 @@ import { HeaderComponent } from '../components/header/header.component';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CarrinhoComponent } from '../carrinho/carrinho.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detail',
@@ -51,9 +52,20 @@ export class DetailComponent {
     });
     this.carrinhoCompra = new CarrinhoComponent();
   }
+
+
   comprar(book = this.Book){
     this.carrinhoCompra.adicionar(book);
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Livro Adicionado",
+      showConfirmButton: false,
+      timer: 2000
+    });
+    this.router.navigate(['carrinho']);
   }
+
 
   livroGratis(){
     if(this.Book.urlBook != ''){
