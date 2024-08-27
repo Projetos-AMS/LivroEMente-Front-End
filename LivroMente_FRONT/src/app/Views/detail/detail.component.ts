@@ -47,7 +47,7 @@ export class DetailComponent {
     if (produtoDetalhe) {
       this.Book = JSON.parse(produtoDetalhe);
     }
-    this.http.get('http://localhost:5170/api/Book').subscribe((Books) => {
+    this.http.get('http://localhost:5035/api/Book').subscribe((Books) => {
       (this.Books = Books), console.log(Books);
     });
     this.carrinhoCompra = new CarrinhoComponent();

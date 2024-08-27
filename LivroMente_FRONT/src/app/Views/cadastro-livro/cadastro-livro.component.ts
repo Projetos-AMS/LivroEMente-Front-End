@@ -60,7 +60,7 @@ export class CadastroLivroComponent  implements OnInit{
     try
     {
       await this.uploadFile();
-      this.http.post<any>('http://localhost:5170/api/Book',this.book).subscribe();
+      this.http.post<any>('http://localhost:5035/api/Book',this.book).subscribe();
       this.router.navigate(['/'])
     }
     catch(error){
@@ -101,18 +101,21 @@ export class CadastroLivroComponent  implements OnInit{
   }
 
   getCategories(){
-    this.http.get<any[]>('http://localhost:5170/api/CategoryBook')
+    this.http.get<any[]>('http://localhost:5035/api/CategoryBook')
     .subscribe(categories => { this.categories = categories; });
   }
 
   uploadFile(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
     if (this.selectedFile) {
-      this.uploadService.uploadFile(this.selectedFile).subscribe(
-        (link: any) =>
+      const formData = new FormData();
+      // Adicione o arquivo ao FormData
+      formData.append('file', this.selectedFile);
+      this.uploadService.upload(formData).subscribe(
+        (response: {path:string}) =>
         {
-           this.book.UrlImg = link;
-           console.log('Link do arquivo:', link);
+           this.book.UrlImg = response.path;
+           console.log('Link do arquivo:', this.book.UrlImg);
            resolve();
         },
         (error: any) =>
