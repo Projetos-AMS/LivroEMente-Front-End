@@ -1,0 +1,131 @@
+<app-header></app-header>
+
+  <div class="page-top">
+    <div class="text">
+      <div class="main-text">
+        <span class="color">Bem vindo!!</span> ao Painel de
+      <span class="color">Vendedor</span>
+      </div>
+      <div class="description">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, alias excepturi porro dolores sed eum praesentium culpa quos adipisci repellat sint in velit fuga architecto. Commodi vero quaerat perferendis expedita.
+      </div>
+    </div>
+    <div class="img">
+      <img src="./assets/livraria.png" alt="">
+    </div>
+  </div>
+  <div class="container">
+    <div class="title">Cadastrar Livros</div>
+    <form action="modal" [formGroup]="bookForm"  (ngSubmit)="postBook()">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details">Título:</span>
+          <input
+            type="text"
+            placeholder="Digite o nome do livro"
+            name="title"
+            formControlName="title" required />
+        </div>
+        <div class="input-box">
+          <span class="details">Autor:</span>
+          <input
+            type="text"
+            placeholder="Digite o nome do autor "
+            name="author"
+            formControlName="author"
+            required />
+        </div>
+        <div class="input-box">
+          <span class="details">Sinopse:</span>
+          <input
+            type="text"
+            placeholder="Escreva uma breve sinopse"
+            name="Synopsis"
+            formControlName="synopsis" required />
+        </div>
+        <div class="input-box">
+          <span class="details">Quantidade:</span>
+          <input
+            type="number" step="1"
+            placeholder="Digite a quantidade de livros"
+            name="quantity"
+            formControlName="quantity"
+            required
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Número de páginas:</span>
+          <input
+            type="number" step="1"
+            placeholder="Digite o número das páginas"
+            name="pages"
+            formControlName="pages"
+            required
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Editora:</span>
+          <input
+            type="text"
+            placeholder="Digite o nome da editora"
+            name="publishingCompany"
+            formControlName="publishingCompany"
+            required />
+        </div>
+        <div class="input-box">
+          <span class="details">Valor:</span>
+          <input
+            type="number"
+            step="0.01"
+            placeholder="Digite o valor do livro"
+            name="value"
+            formControlName="value"
+            required />
+        </div>
+        <div class="input-box">
+          <span class="details">Idioma:</span>
+          <input
+            type="text"
+            placeholder="Digite o idioma"
+            name="language"
+            formControlName="language"
+            required />
+        </div>
+        <div class="input-box">
+          <span class="details">Classificação indicativa</span>
+          <input
+            type="number"
+            placeholder="Digite a faixa etária do livro"
+            name="classification"
+            formControlName="classification"
+            required
+          />
+        </div>
+         <div class="input-box">
+          <span class="details">Coloque uma URL</span>
+          <input
+          type="text"
+          placeholder="Digite a url do livro"
+          name="urlBook"
+          formControlName="urlBook"
+          required
+        />
+        </div>
+        <div class="input-box">
+           <span class="details">Gênero do livro:</span>
+           <select name="genero" formControlName="categoryId"  >
+             <option  *ngFor="let categoria of categories"  [value]="categoria.id">{{categoria.description}}</option>
+           </select>
+        </div>
+        <div class="input-upload">
+          <span class="details">Clique para fazer upload da capa:</span>
+          <input type="file" (change)="onFileSelected($event)" value="Capa">
+        </div>
+      </div>
+      <div class="button" >
+        <input type="submit" value="Cadastrar" [disabled]="!bookForm.valid">
+      </div>
+    </form>
+  </div>
+
+ 

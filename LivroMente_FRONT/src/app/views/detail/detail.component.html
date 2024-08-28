@@ -1,0 +1,84 @@
+<app-header></app-header>
+
+<main>
+    <div class="product-display" *ngIf="Book">
+        <div class="product-image">
+            <div class="side-view">
+                <img class="image-view" src="{{Book.urlImg}}" alt="livro">
+                <img class="image-view" src="{{Book.urlImg}}" alt="livro">
+                <img class="image-view" src="{{Book.urlImg}}" alt="livro">
+                <img class="image-view" src="{{Book.urlImg}}" alt="livro">
+            </div>
+            <img class="main-image" src="{{Book.urlImg}}" alt="livro">
+        </div>
+        <div class="product-info">
+            <h1>{{Book.title}}</h1>
+            <span>por <span class="seller">{{Book.author}}</span></span>
+            <div class="price-quantity">
+                <span class="price">
+                    <ng-container *ngIf="Book.value === 0">Grátis</ng-container>
+                    <ng-container *ngIf="Book.value !== 0">R${{ Book.value | number: '1.2-2' }}</ng-container>
+                </span>
+                <div class="input-quantity">
+                    <label for="quantity">Qtd.</label>
+                    <input class="quantity-box" type="number" id="quantity" min="0" max="{{Book.quantity}}" value="{{Book.quantity}}">
+                </div>
+            </div>
+            <p>{{Book.synopsis}}</p>
+            <div class="option-button" >
+                <button class="add-to-cart"  *ngIf="botaoCarrinho" (click)="comprar(Book)">Adicionar ao Carrinho</button>
+                <button class="buy" *ngIf="botaoComprar">Comprar</button>
+                <a href="{{Book.urlBook}}" target="_blank" id="idDoBotao" *ngIf="botaoGratis"><button  class="add-to-cart" >Abrir link</button></a>
+            </div>
+        </div>
+    </div>
+    <div class="general-product">
+        <div class="seller-profile">
+            <img class="profile-picture" src="./assets/teste.jpg" alt="">
+            <div class="user-info">
+                <span class="username">José M. Ribeiro</span>
+                <span class="star-rate">5,0 XXXXXX</span>
+            </div>
+            <button class="follow">SEGUIR</button>
+            <button class="report">DENUNCIAR</button>
+        </div>
+        <div class="product-title">
+            <span class="category-title">Você também pode gostar</span>
+            <div class="product">
+                <div class="product-card" *ngFor="let Book of Books">
+                    <div class="card-image">
+                        <img class="image" src="{{Book.urlImg}}" alt="">
+                    </div>
+                    <div class="card-info">
+                        <a href="" class="product-name" abrirProduto>{{Book.title}}</a>
+                        <span>5,0 <svg xmlns="http://www.w3.org/2000/svg" height="9" width="10" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#000000" d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg><svg xmlns="http://www.w3.org/2000/svg" height="9" width="10" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#000000" d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg><svg xmlns="http://www.w3.org/2000/svg" height="9" width="10" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#000000" d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg><svg xmlns="http://www.w3.org/2000/svg" height="9" width="10" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#000000" d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg></span>
+                        <p class="product-price">
+                            <ng-container *ngIf="Book.value === 0">Grátis</ng-container>
+                            <ng-container *ngIf="Book.value !== 0">R${{ Book.value | number: '1.2-2' }}</ng-container>
+                        </p>
+                        <!-- <button class="card-btn-buy">COMPRAR</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="product">
+            <span class="title">Produtos Relacionados</span>
+            <div class="product-display">
+                <ng-container *ngFor="let product of products">
+                    <div class="product-card">
+                        <div class="card-image">
+                            <img src="./assets/teste.jpg" alt="" class="image">
+                        </div>
+                        <div class="product-tag">
+                            <div class="product-text">
+                                <span class="product-name">{{product.name}}</span>
+                                <span class="product-price">{{product.price}}</span>
+                            </div>
+                            <button class="buy-button">ADICIONAR O CARRINHO</button>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div> -->
+    </div>
+</main>
