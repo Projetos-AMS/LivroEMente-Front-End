@@ -3,14 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { UploadService } from './upload.service';
+import { UploadService } from './services/uploadService/upload.service';
 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NextDirective } from './next.directive';
 import { PrevDirective } from './prev.directive';
-import { HeaderComponent } from './Views/components/header/header.component';
+import { HeaderComponent } from './views/components/header/header.component';
 
 @NgModule({ declarations: [
         AppComponent,
