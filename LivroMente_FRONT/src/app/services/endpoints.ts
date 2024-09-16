@@ -1,7 +1,7 @@
 export type Endpoints = Record<string, string>;
 
 export namespace EndpointsUrls {
-    const apiUrl = 'http://localhost:5035/api';
+    const apiUrl = 'https://localhost:7151/api';
     export const apiEndpoints: Endpoints = {
         uploadImage: `${apiUrl}/Upload`,
         allBooks: `${apiUrl}/Book`,

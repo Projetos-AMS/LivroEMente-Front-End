@@ -201,20 +201,48 @@ main {
 
 .main-filter-body{
   display: flex;
+  gap: 3em;
 }
 
 .filter{
   display: flex;
   flex-direction: column;
-  height: auto;
   width: 58em;
 }
 
-.filter-checkbox, .filter-checkbox:checked{
+.filter-options, .filter-options:checked{
   color: black;
-  width: 20em;
+  width: 12em;
+  background-color: rgb(229, 229, 229);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
 }
 
+.filter-checkbox, .filter-search{
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 2px;
+}
+
+.search-bar{
+  position: relative;
+}
+
+.search-bar-input{
+  border: 1px solid rgb(189, 189, 189);
+  border-radius: 5px;
+  width: 100%;
+  height: 23px;
+}
+
+fa-icon{
+  position: absolute;
+  font-size: 15px;
+  top: 15%;
+  left: 3%;
+}
 
 .filter-name{
   color: black;
@@ -227,13 +255,13 @@ main {
   flex-direction: column;
 }
 
-.range-title{
+.category-title{
   color: black;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 700;
 }
 
-.range-input{
+.category{
   display: flex;
   flex-direction: column;
   width: 120px;
