@@ -18,4 +18,9 @@ export class BookService {
   postBook(book:Book){
     return this._http.post<Book>(EndpointsUrls.apiEndpoints['addBook'],book);
   }
+
+  getBooksByCategory(filter: string): Observable<Book[]> {
+    const url = `${EndpointsUrls.apiEndpoints['allBooks']}?$filter=${filter}`;
+    return this._http.get<Book[]>(url);
+  }
 }
