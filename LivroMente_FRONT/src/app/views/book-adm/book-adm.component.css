@@ -1,0 +1,97 @@
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.logout {
+  position: fixed;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.content {
+  width: 80%;
+}
+
+.titulo-secao, .tabelaRegistros, .sidebar-mobile {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 30px 10px 0 10px;
+}
+
+.titulo-secao h2 {
+  font-size: 19px;
+}
+
+.titulo-secao p {
+  font-size: 14px;
+}
+
+.tabelaRegistros h3 {
+  padding: 10px;
+  font-size: 15px;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.table-header input {
+  width: 200px;
+  height: 36px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.bootstrap-style-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.bootstrap-style-table th, .bootstrap-style-table td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  width: 25%;
+}
+.bootstrap-style-table th {
+  color: #000;
+}
+.bootstrap-style-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.alignItensColumn {
+  text-align: center;
+}
+
+.item-menu-mobile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .sidebar-mobile {
+    display: none;
+  }
+
+  .content {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .content {
+    width: 100%;
+  }
+}

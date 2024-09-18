@@ -11,6 +11,7 @@ import { CadastroVendedorComponent } from './views/cadastro-vendedor/cadastro-ve
 import { AuthGuard } from './account/shared/auth.guard';
 import { PagamentoComponent } from './views/pagamento/pagamento.component';
 import { PainelAdmComponent } from './views/painel-adm/painel-adm.component';
+import { BookAdmComponent } from './views/book-adm/book-adm.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
     {path:'cadastroVendedor', component: CadastroVendedorComponent},
     {path:'pagamento', component: PagamentoComponent},
     {path: 'painel', component: PainelAdmComponent},
+    {path: 'book', component: BookAdmComponent},
   // ]
   {
     path:'upload', component: CadastroLivroComponent,
