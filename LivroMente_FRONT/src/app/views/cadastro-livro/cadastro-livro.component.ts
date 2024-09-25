@@ -10,12 +10,13 @@ import { CategoryService } from 'src/app/services/categoryService/category.servi
 import { Category } from 'src/app/model/Category';
 import { BookService } from 'src/app/services/bookService/book.service';
 import { Book, BookDto } from 'src/app/model/Book';
+import { FooterComponent } from "../components/footer/footer.component";
 
 
 @Component({
   selector: 'app-cadastro-livro',
   standalone: true,
-  imports: [CommonModule, FormsModule, HeaderComponent,ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, HeaderComponent, ReactiveFormsModule, FooterComponent],
   templateUrl: './cadastro-livro.component.html',
   styleUrl: './cadastro-livro.component.css',
   template: `

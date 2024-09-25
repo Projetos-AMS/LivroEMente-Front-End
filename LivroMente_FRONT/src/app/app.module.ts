@@ -15,13 +15,23 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-@NgModule({ declarations: [
-        AppComponent,
-        NextDirective,
-        PrevDirective,
-    ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        AppRoutingModule,
-        CommonModule,
-        FormsModule,MatPaginatorModule, FontAwesomeModule], providers: [UploadService, provideHttpClient(withInterceptorsFromDi()), provideAnimationsAsync()] })
+@NgModule({
+  declarations: [
+    AppComponent,
+    NextDirective,
+    PrevDirective,
+  ],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CommonModule,
+    FormsModule,
+    MatPaginatorModule,
+    FontAwesomeModule],
+  providers: [
+    UploadService,
+    provideHttpClient(withInterceptorsFromDi()),
+    provideAnimationsAsync()]
+  })
 export class AppModule { }

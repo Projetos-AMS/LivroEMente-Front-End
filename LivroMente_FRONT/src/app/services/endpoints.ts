@@ -7,6 +7,8 @@ export namespace EndpointsUrls {
         allBooks: `${apiUrl}/Book`,
         addBook: `${apiUrl}/Book`,
         allCategories: `${apiUrl}/CategoryBook`,
+        register: `${apiUrl}/users/Register`,
+        login: `${apiUrl}/users/Login`,
         totalOrders: `${apiUrl}/Admin/allOrders?$select=total&$top=1`,
         allOrders:`${apiUrl}/Order`,
         byIdOrder: `${apiUrl}/Order/`,
