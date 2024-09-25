@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { NextDirective } from './next.directive';
 import { PrevDirective } from './prev.directive';
 import { HeaderComponent } from './views/components/header/header.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -20,5 +21,5 @@ import { HeaderComponent } from './views/components/header/header.component';
     bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
         CommonModule,
-        FormsModule], providers: [UploadService, provideHttpClient(withInterceptorsFromDi())] })
+        FormsModule], providers: [UploadService, provideHttpClient(withInterceptorsFromDi()), provideAnimationsAsync()] })
 export class AppModule { }
