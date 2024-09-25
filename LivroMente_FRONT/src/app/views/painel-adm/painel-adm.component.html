@@ -11,6 +11,21 @@
 
     <div class="page-top">
         <div class="left-content">
+
+          <div class="card">
+            <mat-card class="example-card" appearance="outlined" *ngFor="let total of totalOrders">
+              <mat-card-header>
+                  <mat-card-title style="font-family: Poppins;font-weight: 800;">Vendas</mat-card-title>
+              </mat-card-header>
+              <mat-card-content style="text-align: center;">
+                  <h1 style="color: #849a8a;font-family: Poppins;font-weight: 900;font-size:50px">{{total.Total | number: '1.2-2'}}</h1>
+              </mat-card-content>
+              <mat-card-footer class="example-card-footer" style="text-align: center;margin-top: -15px;">
+                 <p>Vendas completadas</p>
+              </mat-card-footer>
+            </mat-card>
+          </div>
+
           <div class="main-text">
             <h1><span>Bem vindo!!</span> ao painel do<span> Administrador</span></h1>
           </div>
