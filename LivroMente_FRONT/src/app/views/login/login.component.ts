@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AccountService } from 'src/app/account/shared/account.service';
+
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AccountService } from 'src/app/services/accountService/account.service';
 
 @Component({
   selector: 'app-login',
@@ -12,13 +13,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './login.component.css'
 })
 export class LoginComponent  implements OnInit{
-  login = {
-    email : '',
-    password : ''
-  }
-  constructor(private accountService: AccountService,private router:Router){
-
-  }
+  login = { email : '',password : ''}
+  constructor(private accountService: AccountService,private router:Router){}
 
   ngOnInit() {
     this.login.email = '';

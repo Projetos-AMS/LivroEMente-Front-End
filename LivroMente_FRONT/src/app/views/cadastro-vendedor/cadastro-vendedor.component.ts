@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AccountService } from 'src/app/account/shared/account.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AccountService } from 'src/app/services/accountService/account.service';
 
 @Component({
   selector: 'app-cadastro-vendedor',
