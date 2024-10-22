@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../components/header/header.component';
 import { Book } from 'src/app/model/Book';
+import { PreferenceService } from 'src/app/services/preferenceService/preference.service';
+import { Preference } from "src/app/model/Preference";
 
 
 @Component({
@@ -17,6 +19,19 @@ export class CarrinhoComponent   implements OnInit{
     this.ObterProduto();
     
   }
+
+  product = {
+    id: "",
+    title: '',
+    description: '',
+    quantity: 0,
+    currencyId: 'BRL',
+    unitPrice: 0
+  };
+
+
+
+
   totalGeral: any;
   listaBook: Book[] = [];
   total:any = 1;
@@ -61,9 +76,46 @@ export class CarrinhoComponent   implements OnInit{
        localStorage.setItem("produtoLocalStoge", JSON.stringify(this.listaBook));
     }
   }
-
-  comprar(){
-    localStorage.setItem("produtoLocalStoge", "");
+  constructor(private preferenceService: PreferenceService){}
+  comprar() {
+    
+    // Primeiro, certifique-se de que está buscando a lista de produtos no localStorage
+    var produtoLocalStoge = localStorage.getItem("produtoLocalStoge");
+    if (produtoLocalStoge) {
+      this.listaBook = JSON.parse(produtoLocalStoge);
+    }
+  
+    // Crie o array de items a partir da lista de livros
+    const items = this.listaBook.map(book => ({
+      title: book.title,
+      description: book.synopsis,
+      quantity: book.quantity,
+      currency_id: this.product.currencyId,
+      unitprice: book.value, // Corrigido para acessar o preço de cada livro
+    }));
+  
+    // Configuração da requisição de pagamento
+    const request = {
+      items: items,
+      back_urls: {
+        success: 'https://www.your-site.com/success',
+        failure: 'https://www.your-site.com/failure',
+        pending: 'https://www.your-site.com/pending'
+      },
+      auto_return: 'approved' // Opcional
+    };
+  
+    // Chama a API de pagamento
+    this.preferenceService.createPayment(request).subscribe(
+      response => {
+        const redirectUrl = response.preference.sandboxInitPoint;
+        console.log('Resposta da API:', redirectUrl); 
+        window.location.href = redirectUrl; 
+      },
+      error => {
+        console.error('Erro ao criar pagamento:', error);
+      }
+    );
   }
  
 

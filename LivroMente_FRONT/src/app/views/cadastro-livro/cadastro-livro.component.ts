@@ -84,7 +84,7 @@ export class CadastroLivroComponent implements OnInit {
       const bookData = this.bookForm.value;
       this.bookService.postBook(bookData).subscribe();
       this.router.navigate(['/'])
-    
+      console.log()
   }
 
   onFileSelected(event: any): void {

@@ -10,10 +10,15 @@ import { CadastroClienteComponent } from './views/cadastro-cliente/cadastro-clie
 import { CadastroVendedorComponent } from './views/cadastro-vendedor/cadastro-vendedor.component';
 import { AuthGuard } from './account/shared/auth.guard';
 import { PagamentoComponent } from './views/pagamento/pagamento.component';
-import { PainelAdmComponent } from './views/painel-adm/painel-adm.component';
+// import { PainelAdmComponent } from './views/painel-adm/painel-adm.component';
 
 const routes: Routes = [
-  {path:'', component: HomeComponent},
+  { path: '', component: HomeComponent, children: [
+    { path: 'success', component: HomeComponent },
+    { path: 'failure', component: HomeComponent },
+    { path: 'pending', component: HomeComponent }
+  ]
+},
   // children: [
     {path:'carrinho', component: CarrinhoComponent},
     {path:'vendas', component: VendasComponent},
@@ -21,7 +26,7 @@ const routes: Routes = [
     {path:'cadastroCliente', component: CadastroClienteComponent},
     {path:'cadastroVendedor', component: CadastroVendedorComponent},
     {path:'pagamento', component: PagamentoComponent},
-    {path: 'painel', component: PainelAdmComponent},
+    // {path: 'painel', component: PainelAdmComponent},
   // ]
   {
     path:'upload', component: CadastroLivroComponent,

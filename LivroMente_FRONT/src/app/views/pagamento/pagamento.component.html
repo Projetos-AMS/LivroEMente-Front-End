@@ -5,10 +5,10 @@
   </div>
 </section>
 <body>
-  <img class="img-pequena" src="..\assets\meninalendo.png" alt="">
+  
   <div class="payment-container">
     <div class="payment-header">
-      <h2>Detalhes do Pagamento</h2>
+      <h2>Detalhes do Pedido</h2>
     </div>
     <div class="payment-form">
       <label for="card-number">Número do Cartão:</label>
@@ -22,6 +22,7 @@
           <label for="expiry-date">Data de Expiração:</label>
           <input type="date" id="expiry-date" placeholder="MM/AA">
         </div>
+       
         <div class="flex-item">
           <label for="cvv">CVV:</label>
           <input type="text" id="cvv" placeholder="123">
@@ -30,9 +31,11 @@
       <div class="error-message" *ngIf="showError">
         Por favor, preencha todos os campos.
       </div>
-      <button class="pay-button" (click)="pay()">Pagar</button>
+      <button (click)="criarPagamento()">Pagar</button>
+      
     </div>
-
   </div>
+  
+
 </body>
 

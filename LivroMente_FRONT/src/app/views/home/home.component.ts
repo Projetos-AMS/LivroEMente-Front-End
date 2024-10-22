@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from '../components/header/header.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { BookService } from 'src/app/services/bookService/book.service';
@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { CategoryService } from 'src/app/services/categoryService/category.service';
 import { CategoryFilterComponent } from '../category-filter/category-filter.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -24,16 +25,30 @@ export class HomeComponent implements OnInit {
   Book!: Book;
   selectedCategories: string[] = [];
   romanceBooks: Book[] = [];
+  message: string | null = null;
 
   faSearch = faSearch;
 
   constructor(
     private router: Router,
     private _bookService: BookService,
-    private _categoryService: CategoryService
+    private _categoryService: CategoryService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+
+    this.route.url.subscribe(url => {
+      const path = url.join('/');
+      if (path === 'Success') {
+        this.showAlert('Sucesso', 'Compra realizada com sucesso!', 'success');
+      } else if (path === 'Failure') {
+        this.showAlert('Erro', 'Houve um erro na compra.', 'error');
+      } else if (path === 'Pending') {
+        this.showAlert('Pendente', 'A compra está pendente.', 'warning');
+      }
+    });
+
     this._bookService.getBooks().subscribe((books) => {
       this.Books = books;
     });
@@ -72,8 +87,24 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  public abrirProduto(Book = this.Book) {
-    sessionStorage.setItem('produtoDetalhe', JSON.stringify(Book));
-    this.router.navigate(['/detalhe']);
-  }
-}
+
+  private showAlert(title: string, text: string, icon: 'success' | 'error' | 'warning') {
+    Swal.fire({
+      title,
+      text,
+      icon,
+      confirmButtonText: 'OK'
+    });}
+
+
+
+    public abrirProduto(Book = this.Book) {
+    
+        sessionStorage.setItem('produtoDetalhe', JSON.stringify(Book));
+        console.log('Produto detalhado armazenado:', Book);
+        this.router.navigate(['/detalhe']);
+  
+      console.error('Objeto Book está indefinido ou vazio.');
+      }
+    }
+
