@@ -14,6 +14,11 @@ export class OrderService {
   getTotalOrders()  {
     return this._http.get(EndpointsUrls.apiEndpoints['totalOrders']);
   }
+  createOrdeer(orderData: any): Observable<any> {
+    return this._http.post<any>(EndpointsUrls.apiEndpoints['order'], orderData);
+    }
+
+ 
 
   getAllOrders(top: number,skip:number) : Observable<any>{
     let params = new HttpParams()
