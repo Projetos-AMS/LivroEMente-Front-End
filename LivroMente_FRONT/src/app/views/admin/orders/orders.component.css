@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    min-height: 600px; /* Altura mínima para a sidebar */
+    background-color: #849a8aae;
+    color: #fff;
+    padding: 15px;
+    position: fixed;
+    text-align: center;
+}
+
+.sidebar img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul li a {
+    color: #000000;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s;
+    border-radius: 15px;
+}
+
+.sidebar ul li a:hover {
+    background-color: rgba(133, 154, 138, 0.7);
+}
+
+.bread{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-container {
+    margin-left: 280px; /* Adiciona margem para não sobrepor a sidebar */
+    flex-grow: 1; /* Faz a div ocupar o restante do espaço */
+    padding: 2%; /* Espaçamento interno */
+    justify-content: center;
+    min-height: 500px; /* Altura mínima para o container principal */
+}
+
+
+table.mat-table {
+    width: 100%; /* Para garantir que a tabela use o espaço disponível */
+    margin-top: 30px;
+}
+
+

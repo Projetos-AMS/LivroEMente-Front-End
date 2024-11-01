@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Excluir</h2>
+<mat-dialog-content>
+  <p>Deseja realmente desativar esse pedido?</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="animal()" cdkFocusInitial>Confirmar</button>
+</mat-dialog-actions>

@@ -12,6 +12,7 @@ import { NextDirective } from './next.directive';
 import { PrevDirective } from './prev.directive';
 import { HeaderComponent } from './views/components/header/header.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -21,5 +22,5 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
         CommonModule,
-        FormsModule], providers: [UploadService, provideHttpClient(withInterceptorsFromDi()), provideAnimationsAsync()] })
+        FormsModule,MatPaginatorModule], providers: [UploadService, provideHttpClient(withInterceptorsFromDi()), provideAnimationsAsync()] })
 export class AppModule { }
