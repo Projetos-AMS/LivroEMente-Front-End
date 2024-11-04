@@ -5,20 +5,24 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { OrderService } from 'src/app/services/orderService/order-service.service';
-import { AddOrderComponent } from './modals/add-order/add-order.component';
+
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteOrderComponent } from './modals/delete-order/delete-order.component';
+import { AddOrderComponent } from '../orders/modals/add-order/add-order.component';
+import { DeleteOrderComponent } from '../orders/modals/delete-order/delete-order.component';
+import { BookService } from 'src/app/services/bookService/book.service';
+
 
 @Component({
-  selector: 'app-orders',
+  selector: 'app-book',
   standalone: true,
   imports: [CommonModule,MatTableModule, MatPaginatorModule,MatIconModule,MatButtonModule],
-  templateUrl: './orders.component.html',
-  styleUrl: './orders.component.css'
+  templateUrl: './book.component.html',
+  styleUrl: './book.component.css'
 })
-export class OrdersComponent implements AfterViewInit,OnInit{
-  displayedColumns: string[] = ['userId', 'date', 'valueTotal', 'status','acao'];
-  orders: any[] = [];
+export class BookComponent implements AfterViewInit,OnInit {
+
+  displayedColumns: string[] = ['title', 'company', 'value', 'status','acao'];
+  books: any[] = [];
   totalItems: number = 0; 
   pageSize: number = 5; 
   currentPage: number = 0;
@@ -28,7 +32,7 @@ export class OrdersComponent implements AfterViewInit,OnInit{
 
   @ViewChild(MatPaginator) paginator: MatPaginator =  <MatPaginator>{};
 
-  constructor(private orderService: OrderService){}
+  constructor(private bookService: BookService){}
   ngOnInit(): void {
     this.loadOrders();
   }
@@ -41,8 +45,8 @@ export class OrdersComponent implements AfterViewInit,OnInit{
 
   loadOrders() : void{
     const skip = this.currentPage * this.pageSize;
-    this.orderService.getAllOrders(this.pageSize,skip).subscribe(data => {
-      this.orders = data;
+    this.bookService.getAllBooks(this.pageSize,skip).subscribe(data => {
+      this.books = data;
       this.totalItems = data['@odata.count']; 
     })
   }
@@ -107,8 +111,4 @@ export class OrdersComponent implements AfterViewInit,OnInit{
       }
     });
   }
-
-
-
 }
-
