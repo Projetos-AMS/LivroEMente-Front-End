@@ -3,9 +3,8 @@
         <img src="assets/Logo.png" alt="Menu Image">
         <ul>
             <li><a href="/painel">Home</a></li>
-            <li><a href="#">Livros</a></li>
+            <li><a href="/livros">Livros</a></li>
             <li><a href="/pedidos">Pedidos</a></li>
-            <li><a href="#">?</a></li>
         </ul>
     </div>
 
@@ -18,7 +17,7 @@
                   <mat-card-title style="font-family: Poppins;font-weight: 800;">Vendas</mat-card-title>
               </mat-card-header>
               <mat-card-content style="text-align: center;">
-                  <h1 style="color: #849a8a;font-family: Poppins;font-weight: 900;font-size:50px">{{total.Total | number: '1.2-2'}}</h1>
+                  <h1 style="color: #849a8a;font-family: Poppins;font-weight: 900;font-size:50px">{{ (total.Total ?? 0) | number: '1.2-2' }}</h1>
               </mat-card-content>
               <mat-card-footer class="example-card-footer" style="text-align: center;margin-top: -15px;">
                  <p>Vendas completadas</p>
