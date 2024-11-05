@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatCardModule } from '@angular/material/card';
-import { MatChipsModule } from '@angular/material/chips';
+ import { MatProgressBarModule } from '@angular/material/progress-bar';
+ import { MatCardModule } from '@angular/material/card';
+ import { MatChipsModule } from '@angular/material/chips';
 import { OrderService } from 'src/app/services/orderService/order-service.service';
 import { CommonModule } from '@angular/common';
 

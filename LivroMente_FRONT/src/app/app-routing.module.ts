@@ -15,7 +15,12 @@ import { OrdersComponent } from './views/admin/orders/orders.component';
 import { BookComponent } from './views/admin/book/book.component';
 
 const routes: Routes = [
-  {path:'', component: HomeComponent},
+  { path: '', component: HomeComponent, children: [
+    { path: 'success', component: HomeComponent },
+    { path: 'failure', component: HomeComponent },
+    { path: 'pending', component: HomeComponent }
+  ]
+},
   // children: [
     {path:'carrinho', component: CarrinhoComponent},
     {path:'vendas', component: VendasComponent},
@@ -24,8 +29,6 @@ const routes: Routes = [
     {path:'cadastroVendedor', component: CadastroVendedorComponent},
     {path:'pagamento', component: PagamentoComponent},
     {path: 'painel', component: PainelAdmComponent},
-    {path: 'pedidos', component: OrdersComponent},
-    {path: 'livros', component: BookComponent},
   // ]
   {
     path:'upload', component: CadastroLivroComponent,
