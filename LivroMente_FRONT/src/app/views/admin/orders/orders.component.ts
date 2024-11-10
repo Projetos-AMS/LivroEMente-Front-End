@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, inject, model, OnInit, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, inject, model, OnInit, signal, ViewChild } from '@angular/core';
 import {MatPaginator, MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { OrderService } from 'src/app/services/orderService/order-service.service';
-import { AddOrderComponent } from './modals/add-order/add-order.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteOrderComponent } from './modals/delete-order/delete-order.component';
+import { OrderDetailsComponent } from './modals/order-details/order-details.component';
 
 @Component({
   selector: 'app-orders',
@@ -28,7 +28,7 @@ export class OrdersComponent implements AfterViewInit,OnInit{
 
   @ViewChild(MatPaginator) paginator: MatPaginator =  <MatPaginator>{};
 
-  constructor(private orderService: OrderService){}
+  constructor(private orderService: OrderService,private _changeDetectorRef: ChangeDetectorRef,){}
   ngOnInit(): void {
     this.loadOrders();
   }
@@ -53,23 +53,6 @@ export class OrdersComponent implements AfterViewInit,OnInit{
     this.loadOrders(); // Recarrega os dados
   }
 
-  openDialog(orderId:string): void {
-    const dialogRef = this.dialog.open(AddOrderComponent, {
-      data: {
-        orderId:orderId
-      },
-      
-      
-    });
-    console.log(orderId);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if (result !== undefined) {
-        this.animal.set(result);
-      }
-    });
-  }
 
 
   delete(orderId:string): void {
@@ -83,22 +66,21 @@ export class OrdersComponent implements AfterViewInit,OnInit{
     console.log(orderId);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if (result !== undefined) {
-        this.animal.set(result);
-      }
+      this.ngOnInit();
+      this._changeDetectorRef.detectChanges();   
+     
     });
   }
 
   getDetails(orderId:string): void {
-    const dialogRef = this.dialog.open(DeleteOrderComponent, {
+    const dialogRef = this.dialog.open(OrderDetailsComponent, {
       data: {
         orderId:orderId
       },
       
       
     });
-    console.log(orderId);
+ 
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Book } from 'src/app/model/Book';
+import { Book, BookDto } from 'src/app/model/Book';
 import { EndpointsUrls } from '../endpoints';
 
 @Injectable({
@@ -23,8 +23,8 @@ export class BookService {
     return this._http.get(EndpointsUrls.apiEndpoints['allBooks'],{params});
   }
 
-  postBook(book:Book){
-    return this._http.post<Book>(EndpointsUrls.apiEndpoints['addBook'],book);
+  postBook(book:BookDto){
+    return this._http.post<boolean>(EndpointsUrls.apiEndpoints['addBook'],book);
   }
 
   getBooksByCategory(filter: string): Observable<Book[]> {

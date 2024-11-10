@@ -9,6 +9,8 @@ export namespace EndpointsUrls {
         allCategories: `${apiUrl}/CategoryBook`,
         totalOrders: `${apiUrl}/Admin/allOrders?$select=total&$top=1`,
         allOrders:`${apiUrl}/Order`,
-        preference: `${apiUrl}/Preference`
+        byIdOrder: `${apiUrl}/Order/`,
+        preference: `${apiUrl}/Preference`,
+        cancelOrder: `${apiUrl}/Order/`
     };
 }

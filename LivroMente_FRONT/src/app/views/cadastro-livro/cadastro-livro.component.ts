@@ -9,7 +9,7 @@ import { UploadService } from 'src/app/services/uploadService/upload.service';
 import { CategoryService } from 'src/app/services/categoryService/category.service';
 import { Category } from 'src/app/model/Category';
 import { BookService } from 'src/app/services/bookService/book.service';
-import { Book } from 'src/app/model/Book';
+import { Book, BookDto } from 'src/app/model/Book';
 
 
 @Component({
@@ -30,6 +30,7 @@ export class CadastroLivroComponent implements OnInit {
   showError: boolean | undefined;
   showAcerto: boolean | undefined;
   bookForm: FormGroup;
+  hasError: any;
 
   ngOnInit() {
     this.getCategories();
@@ -72,19 +73,51 @@ export class CadastroLivroComponent implements OnInit {
   }
 
   async postBook() {
-    Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "Livro cadastrado",
-      showConfirmButton: false,
-      timer: 2000
-    });
-    
+
       await this.uploadFile();
-      const bookData = this.bookForm.value;
-      this.bookService.postBook(bookData).subscribe();
-      this.router.navigate(['/'])
-      console.log()
+
+      console.log(this.bookForm.value);
+      const bookData = {
+        BookRequest: {
+          title: this.bookForm.get('title')?.value,
+          author: this.bookForm.get('author')?.value,
+          synopsis: this.bookForm.get('synopsis')?.value,
+          quantity: this.bookForm.get('quantity')?.value,
+          pages: this.bookForm.get('pages')?.value,
+          publishingCompany: this.bookForm.get('publishingCompany')?.value,
+          isbn: this.bookForm.get('isbn')?.value,
+          value: this.bookForm.get('value')?.value,
+          language: this.bookForm.get('language')?.value,
+          classification: this.bookForm.get('classification')?.value,
+          isActive:this.bookForm.get('isActive')?.value,
+          categoryId: this.bookForm.get('categoryId')?.value,
+          urlBook: this.bookForm.get('urlBook')?.value,
+          urlImg: this.bookForm.get('urlImg')?.value
+        }
+      } as BookDto;
+      this.bookService.postBook(bookData).subscribe({
+        next: (data) =>{
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Livro cadastrado",
+            showConfirmButton: false,
+            timer: 2000
+          });
+          this.router.navigate(['/'])
+        },
+        error: (errors) => {
+          Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: "Erro ocorreu",
+            showConfirmButton: false,
+            timer: 2000
+          });
+        }
+      });
+       
+      
   }
 
   onFileSelected(event: any): void {

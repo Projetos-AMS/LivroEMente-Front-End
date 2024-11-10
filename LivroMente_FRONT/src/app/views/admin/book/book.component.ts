@@ -5,9 +5,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { OrderService } from 'src/app/services/orderService/order-service.service';
-
 import { MatDialog } from '@angular/material/dialog';
-import { AddOrderComponent } from '../orders/modals/add-order/add-order.component';
 import { DeleteOrderComponent } from '../orders/modals/delete-order/delete-order.component';
 import { BookService } from 'src/app/services/bookService/book.service';
 
@@ -56,25 +54,6 @@ export class BookComponent implements AfterViewInit,OnInit {
     this.currentPage = event.pageIndex; // Atualiza a página atual
     this.loadOrders(); // Recarrega os dados
   }
-
-  openDialog(orderId:string): void {
-    const dialogRef = this.dialog.open(AddOrderComponent, {
-      data: {
-        orderId:orderId
-      },
-      
-      
-    });
-    console.log(orderId);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if (result !== undefined) {
-        this.animal.set(result);
-      }
-    });
-  }
-
 
   delete(orderId:string): void {
     const dialogRef = this.dialog.open(DeleteOrderComponent, {
