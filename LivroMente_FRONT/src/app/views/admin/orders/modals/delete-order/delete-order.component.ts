@@ -1,4 +1,4 @@
-import { Component, inject, model } from '@angular/core';
+import { Component, Inject, inject, model } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -11,6 +11,7 @@ import {
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
+import { OrderService } from 'src/app/services/orderService/order-service.service';
 
 export interface DialogData {
   animal: string;
@@ -34,9 +35,27 @@ export interface DialogData {
   styleUrl: './delete-order.component.css'
 })
 export class DeleteOrderComponent {
-  readonly dialogRef = inject(MatDialogRef<DeleteOrderComponent>);
-  readonly data = inject<DialogData>(MAT_DIALOG_DATA);
-  readonly animal = model(this.data.animal);
+
+
+
+
+  constructor(
+    private _service: OrderService,
+    @Inject(MAT_DIALOG_DATA) public data: { orderId: string },
+    private dialogRef: MatDialogRef<DeleteOrderComponent>,
+
+  ){}
+
+  delete(): void {
+    this._service.cancelOrder(this.data.orderId).subscribe({
+      complete: () =>{
+        this.dialogRef.close();
+      },
+      error: () => {
+       console.log('Um erro ocorreu');
+    }
+    });
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

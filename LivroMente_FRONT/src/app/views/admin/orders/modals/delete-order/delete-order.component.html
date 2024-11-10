@@ -3,6 +3,6 @@
   <p>Deseja realmente desativar esse pedido?</p>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancelar</button>
-  <button mat-button [mat-dialog-close]="animal()" cdkFocusInitial>Confirmar</button>
+  <button mat-flat-button color="warn" style="color:black" (click)="onNoClick()">Cancelar</button>
+  <button mat-flat-button style="background-color: #849a8aae;color: black;" (click)="delete()"  cdkFocusInitial>Confirmar</button>
 </mat-dialog-actions>

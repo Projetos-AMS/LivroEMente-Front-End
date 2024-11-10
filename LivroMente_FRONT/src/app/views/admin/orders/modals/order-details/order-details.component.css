@@ -1,0 +1,41 @@
+.first-column{
+    display: flex;
+    justify-content:space-between;
+}
+
+.second-column{
+    display: flex;
+   
+}
+
+.valueTotal,.status{
+    width: 48%;
+}
+
+.date{
+    width: 48%;
+}
+
+
+
+.layout{
+   
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:10px;
+    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.column label{
+    display: block;
+    font-weight: bold;
+}
+
+.column span{
+    display: block;
+    font-size: 14px;
+    color: #555;
+}

@@ -5,6 +5,12 @@
   font-family: "Poppins";
 }
 
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 4px;
+}
+
 .page-top {
   display: flex;
   width: 55em;

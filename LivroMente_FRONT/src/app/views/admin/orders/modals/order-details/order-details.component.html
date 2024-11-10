@@ -1,8 +1,72 @@
-<h2 mat-dialog-title>Excluir</h2>
-<mat-dialog-content>
-  <p>Deseja realmente desativar esse pedido?</p>
+<h2 mat-dialog-title >Cliente: {{order.user.completeName}}</h2>
+<mat-dialog-content >
+    <div class="first-column">
+      <mat-form-field class="valueTotal">
+        <mat-label>Valor Total</mat-label>
+        <input matInput   [value]="order.valueTotal" readonly>
+      </mat-form-field>
+
+      <mat-form-field class="status">
+        <mat-label>Status</mat-label>
+        <input matInput [value]="order.status" readonly>
+      </mat-form-field>
+    </div>
+
+    <div class="second-column">
+      <mat-form-field class="date">
+        <mat-label>Data da compra</mat-label>
+        <input matInput [matDatepicker]="picker" [value]="order.date" readonly>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    
+
+    <mat-accordion >
+      <mat-expansion-panel *ngFor="let detail of order.orderDetails"  (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+        <!-- Header -->
+        <mat-expansion-panel-header>
+          <mat-panel-title> 
+            <mat-icon style="color:#617968ae">book</mat-icon>
+          </mat-panel-title>
+
+          <mat-panel-description> Título: {{detail.book.title}}</mat-panel-description>
+        </mat-expansion-panel-header>
+       
+          <div class="layout">
+            <div class="column">
+              <label style="color:#617968ae">Editora</label>
+              <span>{{detail.book.publishingCompany}}</span>
+            </div>
+
+            <div class="column">
+              <label style="color:#617968ae">Autor</label>
+              <span> {{detail.book.author}}</span>
+            </div>
+          </div>
+
+          <div class="layout">
+            <div class="column">
+              <label style="color:#617968ae">Valor</label>
+              <span *ngIf="detail.book.value === 0">Grátis</span>
+              <span *ngIf="detail.book.value !== 0">{{ detail.book.value | number: '1.2-2' }}</span>
+            </div>
+
+            <div class="column">
+              <label style="color:#617968ae">Categoria</label>
+              <span>{{detail.book.category.description}}</span>
+            </div>
+            
+          </div>
+        
+      </mat-expansion-panel>
+     
+    </mat-accordion>    
+    
+  <br>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancelar</button>
-  <button mat-button [mat-dialog-close]="animal()" cdkFocusInitial>Confirmar</button>
-</mat-dialog-actions>
+<!-- <mat-dialog-actions>
+  <button mat-flat-button color="warn" style="color:black" (click)="onNoClick()">Cancelar</button>
+  <button mat-flat-button style="background-color: #849a8aae;color: black;"  cdkFocusInitial>Confirmar</button>
+</mat-dialog-actions> -->
