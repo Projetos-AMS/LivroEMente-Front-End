@@ -36,7 +36,7 @@ const routes: Routes = [
   // ]
   {
     path:'upload', component: CadastroLivroComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
   path: '',

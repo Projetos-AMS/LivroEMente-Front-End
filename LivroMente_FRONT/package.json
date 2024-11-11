@@ -29,6 +29,7 @@
     "boxicons": "^2.1.4",
     "font-awesome": "^4.7.0",
     "jwt-decode": "^4.0.0",
+    "livro-mente-front": "file:",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.14.4",
     "tslib": "^2.3.0",

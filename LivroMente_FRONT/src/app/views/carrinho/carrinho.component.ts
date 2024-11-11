@@ -4,12 +4,13 @@ import { HeaderComponent } from '../components/header/header.component';
 import { Book } from 'src/app/model/Book';
 import { PreferenceService } from 'src/app/services/preferenceService/preference.service';
 import { Preference } from "src/app/model/Preference";
+import { FooterComponent } from '../components/footer/footer.component';
 
 
 @Component({
   selector: 'app-carrinho',
   standalone: true,
-  imports: [CommonModule, HeaderComponent],
+  imports: [CommonModule, HeaderComponent, FooterComponent],
   templateUrl: './carrinho.component.html',
   styleUrl: './carrinho.component.css'
 })

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AccountService } from 'src/app/account/shared/account.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AccountService } from 'src/app/services/accountService/account.service';
 @Component({
   selector: 'app-cadastro-cliente',
   standalone: true,
@@ -13,11 +13,10 @@ import { Router } from '@angular/router';
 export class CadastroClienteComponent  implements OnInit {
   account = {
     completeName: '',
-    userName:'',
     email: '',
     password:'',
     confirmPassword:'',
-    role:'Cliente'
+    role:'User'
   }
 
   constructor(private accountService : AccountService, private router: Router){}
@@ -27,10 +26,9 @@ export class CadastroClienteComponent  implements OnInit {
   async onSubmit(){
     try{
       const result = await this.accountService.createdAccount(this.account);
-      this.router.navigate(['login']);
+      this.router.navigate(['']);
     }catch(error){
       console.error(error);
-      this.router.navigate(['login']);
     }
   }
 }
