@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HeaderComponent } from '../components/header/header.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { UploadService } from 'src/app/services/uploadService/upload.service';
 import { CategoryService } from 'src/app/services/categoryService/category.service';
@@ -11,12 +11,16 @@ import { Category } from 'src/app/model/Category';
 import { BookService } from 'src/app/services/bookService/book.service';
 import { Book, BookDto } from 'src/app/model/Book';
 import { FooterComponent } from "../components/footer/footer.component";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @Component({
   selector: 'app-cadastro-livro',
   standalone: true,
-  imports: [CommonModule, FormsModule, HeaderComponent, ReactiveFormsModule, FooterComponent],
+  imports: [CommonModule, MatSlideToggleModule,FormsModule, HeaderComponent, ReactiveFormsModule, FooterComponent, MatFormFieldModule,
+    MatInputModule,],
   templateUrl: './cadastro-livro.component.html',
   styleUrl: './cadastro-livro.component.css',
   template: `
@@ -32,34 +36,52 @@ export class CadastroLivroComponent implements OnInit {
   showAcerto: boolean | undefined;
   bookForm: FormGroup;
   hasError: any;
+  isEditMode = false;
+  bookId!: string;
+  maxSynopsisNameSize: number = 300;
+  maxLanguageNameSize: number = 2;
+  maxTitleNameSize: number = 50;
+  maxIsbnNameSize: number = 20;
+  maxPublishingCompanyNameSize:number = 20;
+  maxAuthorNameSize: number = 60;
+  
+  
 
-  ngOnInit() {
-    this.getCategories();
-    
-  }
+ 
+
   selectedFile: File | undefined;
 
-  constructor(private uploadService: UploadService, private categoryService: CategoryService, private bookService: BookService, private http: HttpClient, private form: FormBuilder, private router: Router) 
+  constructor(private uploadService: UploadService, private activatedRoute: ActivatedRoute, private categoryService: CategoryService, private bookService: BookService, private http: HttpClient, private form: FormBuilder, private router: Router) 
   { 
     this.bookForm = this.form.group({
       title: ['',[ Validators.required,
-        Validators.pattern(/[\S]/)
+        Validators.pattern(/[\S]/),
+        Validators.maxLength(50)
       ]],
       author: ['',[ Validators.required,
-        Validators.pattern(/[\S]/)
+        Validators.pattern(/[\S]/),
+        Validators.maxLength(60)
       ]],
-      synopsis: ['',[Validators.pattern(/[\S]/)]],
+      synopsis: ['',[
+        Validators.pattern(/[\S]/),
+        Validators.maxLength(300)
+      ]],
       quantity: [''],
       pages: ['',[Validators.pattern(/[\S]/)]],
       publishingCompany: ['',[ Validators.required,
-        Validators.pattern(/[\S]/)
+        Validators.pattern(/[\S]/),
+        Validators.maxLength(20)
       ]],
-      isbn: [''],
+      isbn: ['',[
+        Validators.pattern(/[\S]/),
+        Validators.maxLength(20)
+      ]],
       value: ['',[ Validators.required,
         Validators.pattern(/[\S]/)
       ]],
       language: ['',[Validators.required,
-        Validators.pattern(/[\S]/)
+        Validators.pattern(/[\S]/),
+        Validators.maxLength(2)
       ]],
       classification:['',[ Validators.required,
         Validators.pattern(/[\S]/)
@@ -70,6 +92,32 @@ export class CadastroLivroComponent implements OnInit {
       ]],
       urlBook: ['',[Validators.pattern(/[\S]/)]],
       urlImg: ['',[Validators.pattern(/[\S]/)]]
+    });
+  }
+
+  ngOnInit() {
+      
+     this.getCategories();
+   
+
+    this.bookId = this.activatedRoute.snapshot.params['id'];
+    console.log(this.bookId);
+    
+      if (this.bookId) {
+        this.isEditMode = !!this.bookId;
+        console.log(this.bookId);
+        
+        this.loadBookData(this.bookId);
+      }
+    
+    
+  }
+
+  loadBookData(id: string) {
+    this.bookService.getByIdBook(id).subscribe((book) => {
+      this.bookForm.patchValue(book);
+      console.log(book);
+      
     });
   }
 
@@ -96,27 +144,58 @@ export class CadastroLivroComponent implements OnInit {
           urlImg: this.bookForm.get('urlImg')?.value
         }
       } as BookDto;
-      this.bookService.postBook(bookData).subscribe({
-        next: (data) =>{
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Livro cadastrado",
-            showConfirmButton: false,
-            timer: 2000
-          });
-          this.router.navigate(['/'])
-        },
-        error: (errors) => {
-          Swal.fire({
-            position: "top-end",
-            icon: "error",
-            title: "Erro ocorreu",
-            showConfirmButton: false,
-            timer: 2000
-          });
-        }
-      });
+
+      if(this.isEditMode)
+      {
+        console.log("entrei");
+        console.log(bookData);
+        
+        
+        this.bookService.updateBook(this.bookId,bookData.BookRequest).subscribe({
+          next: (data) =>{
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Livro cadastrado",
+              showConfirmButton: false,
+              timer: 2000
+            });
+            this.router.navigate(['/'])
+          },
+          error: (errors) => {
+            Swal.fire({
+              position: "top-end",
+              icon: "error",
+              title: "Erro ocorreu",
+              showConfirmButton: false,
+              timer: 2000
+            });
+          }
+        });
+      }else{
+        this.bookService.postBook(bookData).subscribe({
+          next: (data) =>{
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Livro cadastrado",
+              showConfirmButton: false,
+              timer: 2000
+            });
+            this.router.navigate(['/'])
+          },
+          error: (errors) => {
+            Swal.fire({
+              position: "top-end",
+              icon: "error",
+              title: "Erro ocorreu",
+              showConfirmButton: false,
+              timer: 2000
+            });
+          }
+        });
+      }
+      
        
       
   }

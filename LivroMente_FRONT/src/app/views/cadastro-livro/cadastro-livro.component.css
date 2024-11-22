@@ -5,6 +5,16 @@
   font-family: "Poppins";
 }
 
+.input-error {
+  border: 1px solid red;
+  background-color: #fdd;
+}
+
+/* Caso queira um estilo de texto diferente */
+.input-error::placeholder {
+  color: red;
+}
+
 .error-message {
   color: red;
   font-size: 0.9em;

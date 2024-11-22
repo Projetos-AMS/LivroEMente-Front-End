@@ -35,9 +35,11 @@ const routes: Routes = [
     {path: 'profile', component: UserProfileComponent},
   // ]
   {
-    path:'upload', component: CadastroLivroComponent,
-    canActivate: [AuthGuard]
+    path:'upload/:id', component: CadastroLivroComponent,
+    
+   // canActivate: [AuthGuard]
   },
+  { path: 'upload', component: CadastroLivroComponent },
   {
   path: '',
   component: LoginComponent,

@@ -63,8 +63,7 @@ export class OrdersComponent implements AfterViewInit,OnInit{
       
       
     });
-    console.log(orderId);
-
+  
     dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();
       this._changeDetectorRef.detectChanges();   

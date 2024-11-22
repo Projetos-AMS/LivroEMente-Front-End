@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, inject, model, OnInit, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, inject, model, OnInit, signal, ViewChild } from '@angular/core';
 import {MatPaginator, MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
@@ -8,12 +8,14 @@ import { OrderService } from 'src/app/services/orderService/order-service.servic
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteOrderComponent } from '../orders/modals/delete-order/delete-order.component';
 import { BookService } from 'src/app/services/bookService/book.service';
+import { RouterModule } from '@angular/router';
+import { DeleteBookComponent } from './modal/delete-book/delete-book.component';
 
 
 @Component({
   selector: 'app-book',
   standalone: true,
-  imports: [CommonModule,MatTableModule, MatPaginatorModule,MatIconModule,MatButtonModule],
+  imports: [CommonModule,MatTableModule,RouterModule, MatPaginatorModule,MatIconModule,MatButtonModule],
   templateUrl: './book.component.html',
   styleUrl: './book.component.css'
 })
@@ -30,7 +32,7 @@ export class BookComponent implements AfterViewInit,OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator =  <MatPaginator>{};
 
-  constructor(private bookService: BookService){}
+  constructor(private bookService: BookService,private _changeDetectorRef: ChangeDetectorRef){}
   ngOnInit(): void {
     this.loadOrders();
   }
@@ -55,7 +57,7 @@ export class BookComponent implements AfterViewInit,OnInit {
     this.loadOrders(); // Recarrega os dados
   }
 
-  delete(orderId:string): void {
+  getDetails(orderId:string): void {
     const dialogRef = this.dialog.open(DeleteOrderComponent, {
       data: {
         orderId:orderId
@@ -73,21 +75,20 @@ export class BookComponent implements AfterViewInit,OnInit {
     });
   }
 
-  getDetails(orderId:string): void {
-    const dialogRef = this.dialog.open(DeleteOrderComponent, {
+  delete(bookId:string): void {
+    const dialogRef = this.dialog.open(DeleteBookComponent, {
       data: {
-        orderId:orderId
+        bookId:bookId
       },
       
       
     });
-    console.log(orderId);
+    
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if (result !== undefined) {
-        this.animal.set(result);
-      }
+      this.ngOnInit();
+      this._changeDetectorRef.detectChanges();   
+     
     });
   }
 }

@@ -23,12 +23,24 @@ export class BookService {
     return this._http.get(EndpointsUrls.apiEndpoints['allBooks'],{params});
   }
 
+  getByIdBook(id:string){
+    return this._http.get<Book>(`${EndpointsUrls.apiEndpoints['byBook']}${id}`);
+  }
+
   postBook(book:BookDto){
     return this._http.post<boolean>(EndpointsUrls.apiEndpoints['addBook'],book);
+  }
+
+  updateBook(id:string,book:any){
+    return this._http.put<boolean>(`${EndpointsUrls.apiEndpoints['updateBook']}${id}`,book);
   }
 
   getBooksByCategory(filter: string): Observable<Book[]> {
     const url = `${EndpointsUrls.apiEndpoints['allBooks']}?$filter=${filter}`;
     return this._http.get<Book[]>(url);
+  }
+
+  cancelBook(id: string){
+    return this._http.delete(`${EndpointsUrls.apiEndpoints['cancelBook']}${id}`);
   }
 }
