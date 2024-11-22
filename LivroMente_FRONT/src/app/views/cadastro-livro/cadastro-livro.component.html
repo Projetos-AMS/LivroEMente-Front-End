@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="container">
-    <div class="title">Cadastrar Livros</div>
+    <div class="title">{{ isEditMode ? 'Editar Livro' : 'Cadastrar Livro' }}</div>
     <form action="modal" [formGroup]="bookForm"  (ngSubmit)="postBook()">
       <div class="user-details">
         <div class="input-box">
@@ -24,7 +24,9 @@
             type="text"
             placeholder="Digite o nome do livro"
             name="title"
+            maxlength="{{maxTitleNameSize}}"
             formControlName="title" required />
+            <mat-hint align="end">{{ bookForm.get('title')?.value?.length }} / {{maxTitleNameSize}}</mat-hint>
         </div>
         <div class="input-box">
           <span class="details">Autor:</span>
@@ -33,7 +35,9 @@
             placeholder="Digite o nome do autor "
             name="author"
             formControlName="author"
+            maxlength="{{maxAuthorNameSize}}"
             required />
+            <mat-hint align="end">{{ bookForm.get('author')?.value?.length }} / {{maxAuthorNameSize}}</mat-hint>
         </div>
         <div class="input-box">
           <span class="details">Sinopse:</span>
@@ -41,7 +45,9 @@
             type="text"
             placeholder="Escreva uma breve sinopse"
             name="Synopsis"
+            maxlength="{{maxSynopsisNameSize}}"
             formControlName="synopsis" required />
+            <mat-hint align="end">{{ bookForm.get('synopsis')?.value?.length }} / {{maxSynopsisNameSize}}</mat-hint> 
         </div>
         <div class="input-box">
           <span class="details">Quantidade:</span>
@@ -70,7 +76,9 @@
             placeholder="Digite o nome da editora"
             name="publishingCompany"
             formControlName="publishingCompany"
+            maxlength="{{maxPublishingCompanyNameSize}}"
             required />
+            <mat-hint align="end">{{ bookForm.get('publishingCompany')?.value?.length }} / {{maxPublishingCompanyNameSize}}</mat-hint>
         </div>
         <div class="input-box">
           <span class="details">Valor:</span>
@@ -83,13 +91,19 @@
             required />
         </div>
         <div class="input-box">
-          <span class="details">Idioma:</span>
+         
+            <span class="details">Idioma:</span>
           <input
             type="text"
             placeholder="Digite o idioma"
             name="language"
+            matInput
             formControlName="language"
+            maxlength="{{maxLanguageNameSize}}"
             required />
+            <mat-hint align="end">{{ bookForm.get('language')?.value?.length }} / {{maxLanguageNameSize}}</mat-hint>
+          
+          
         </div>
         <div class="input-box">
           <span class="details">Classificação indicativa</span>
@@ -99,6 +113,7 @@
             name="classification"
             formControlName="classification"
             required
+             
           />
         </div>
          <div class="input-box">
@@ -108,7 +123,6 @@
           placeholder="Digite a url do livro"
           name="urlBook"
           formControlName="urlBook"
-          required
         />
         </div>
         <div class="input-box">
@@ -117,6 +131,23 @@
              <option  *ngFor="let categoria of categories"  [value]="categoria.id">{{categoria.description}}</option>
            </select>
         </div>
+
+        <div class="input-box">
+          <span class="details">Isbn:</span>
+          <input
+            type="text"
+            placeholder="Digite o nome da editora"
+            name="publishingCompany"
+            formControlName="isbn"
+            maxlength="{{maxIsbnNameSize}}"
+             />
+             <mat-hint align="end">{{ bookForm.get('isbn')?.value?.length }} / {{maxIsbnNameSize}}</mat-hint>
+        </div>
+
+        <div>
+          <mat-slide-toggle formControlName="isActive">Ativo</mat-slide-toggle>
+        </div>
+        
         <div class="input-upload">
           <span class="details">Clique para fazer upload da capa:</span>
           <input type="file" (change)="onFileSelected($event)" value="Capa">

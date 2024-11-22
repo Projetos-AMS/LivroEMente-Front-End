@@ -36,9 +36,6 @@ export interface DialogData {
 })
 export class DeleteOrderComponent {
 
-
-
-
   constructor(
     private _service: OrderService,
     @Inject(MAT_DIALOG_DATA) public data: { orderId: string },

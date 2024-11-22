@@ -54,7 +54,7 @@ export class CategoryFilterComponent {
       });
     } else {
       const filterQuery = this.selectedCategories
-        .map((cat) => `CategoryId eq ${cat}`)
+        .map((cat) => `CategoryId eq '${cat}'`)
         .join(' or ');
       this._bookService.getBooksByCategory(filterQuery).subscribe((filteredBooks) => {
         this.Books = filteredBooks;
