@@ -20,6 +20,11 @@
   height: 2em;
 }
 
+.profile{
+  display:flex;
+  gap: 1em;
+}
+
 .signin {
   font-size: 10px;
   font-weight: 800;

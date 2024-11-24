@@ -4,7 +4,7 @@ export interface Order{
     id: string;
     userId: string;
     paymentId: string;
-    date: Date;
-    valueTotal: DecimalPipe;
+    date: string;
+    valueTotal: number;
     status: string;
 }

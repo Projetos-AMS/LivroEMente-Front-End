@@ -104,6 +104,23 @@ export class CarrinhoComponent   implements OnInit{
   }
  
 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   aumentarQuantidade() {
    
       // this.listaBook.forEach(function(a){

@@ -23,7 +23,7 @@ export class UserProfileComponent{
   faLocationDot = faLocationDot;
   faWallet = faWallet;
 
-  public currentMenu: Menu = Menu.Menu2
+  public currentMenu: number = 0;
 
   constructor(
     private _orderService: OrderService
@@ -38,11 +38,11 @@ export class UserProfileComponent{
   }
 
   selectMenuOrderHistory(){
-    this._orderService.getAllOrders(1,0).subscribe((orders) =>{
-      this.Orders = orders;
+    this._orderService.getbyIdOrder('1433ef3d-f9e1-4916-ac7c-9316716090dc').subscribe((orders) =>{
+      this.Orders = Array.isArray(orders) ? orders : [orders];
       console.log(this.Orders);
     });
 
     this.setCurrentMenu(1);
-  }
+  };
 }

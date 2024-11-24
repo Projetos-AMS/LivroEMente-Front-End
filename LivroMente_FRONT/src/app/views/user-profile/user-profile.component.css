@@ -41,6 +41,10 @@ body{
   border: 0;
 }
 
+.user-data{
+  padding: 10em;
+}
+
 .option:hover{
   background-color: #4c6453;
 }
