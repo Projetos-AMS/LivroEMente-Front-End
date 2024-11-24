@@ -11,6 +11,7 @@ export namespace EndpointsUrls {
         cancelBook: `${apiUrl}/Book/`,
         allCategories: `${apiUrl}/CategoryBook`,
         register: `${apiUrl}/users/Register`,
+        addOrder: `${apiUrl}/Order`,
         login: `${apiUrl}/users/Login`,
         totalOrders: `${apiUrl}/Admin/allOrders?$select=total&$top=1`,
         allOrders:`${apiUrl}/Order`,
