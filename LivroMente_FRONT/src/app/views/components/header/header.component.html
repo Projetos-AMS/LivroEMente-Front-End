@@ -1,15 +1,35 @@
 <section class="header">
   <div class="header_nav">
-    <a href="" class=""><div class="logo"><img src="..\assets\Logo.png" alt="logo" /></div></a>
+    
     <div class="nav-bar">
+      <a href="" class=""> <div class="logo"> <img src="..\assets\Logo.png" alt="logo" /> </div> </a>
       <a href="">Início</a>
-      <a href="carrinho">Carrinho</a>
     </div>
     <div class="buttons">
-      <a href="painel"><button class="signin">Painel</button></a>
-      <a href="login"><button class="signin">Sign in</button></a>
-      <a href="cadastro"><button class="signup">Sign up</button></a>
-      <a href="profile" class="profile"><fa-icon [icon]="faUserCircle" size="2x"></fa-icon></a>
+      <a routerLink="carrinho">
+        <fa-icon [icon]="faBasketShopping" class="custom"></fa-icon>
+      </a>
+      <!-- Se não estiver logado -->
+      <ng-container *ngIf="!user; else loggedIn">
+        <a routerLink="login">
+          <button class="signin">Entrar</button>
+        </a>
+        <a routerLink="cadastro">
+          <button class="signup">Cadastre-se</button>
+        </a>
+      </ng-container>
+      
+
+      <!-- Se estiver logado -->
+      <ng-template #loggedIn>
+        <a [routerLink]="getProfileRoute()" class="profile">
+          <fa-icon [icon]="faUserCircle" class="custom"></fa-icon>
+        </a>
+        <button class="logout" (click)="logout()" >Sair</button>
+      </ng-template>
+
+      
     </div>
   </div>
 </section>
+

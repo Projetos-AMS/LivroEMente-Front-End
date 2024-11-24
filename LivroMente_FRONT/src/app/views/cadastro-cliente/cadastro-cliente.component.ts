@@ -20,8 +20,7 @@ export class CadastroClienteComponent  implements OnInit {
   }
 
   constructor(private accountService : AccountService, private router: Router){}
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   async onSubmit(){
     try{

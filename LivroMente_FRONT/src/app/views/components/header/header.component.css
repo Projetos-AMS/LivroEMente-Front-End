@@ -16,7 +16,7 @@
 }
 
 .logo img {
-  width: 9 em;
+  width: 9em;
   height: 2em;
 }
 
@@ -39,14 +39,9 @@
   transition: 80ms;
 }
 
-.signin:active {
-  transform: scale(1, 1);
-  transition: 80ms;
-}
-
 .signup {
   cursor: pointer;
-  width: 70px;
+  width: 80px;
   height: 30px;
   font-size: 10px;
   font-weight: 800;
@@ -62,9 +57,23 @@
   background: rgb(109, 130, 115);
   transition: 0.2s;
 }
+.logout {
+  cursor: pointer;
+  width: 50px;
+  height: 30px;
+  font-size: 10px;
+  font-weight: 800;
+  background-color: #849a8a;
+  color: #ffff;
+  border-radius: 5px;
+  border: 0;
+  transition: outline 0.15s;
+}
 
-.signup:active {
-  background: #425146;
+.logout:hover {
+  outline: 3px solid rgba(132, 154, 138, 0.2);
+  background: rgb(109, 130, 115);
+  transition: 0.2s;
 }
 
 .nav-bar{
@@ -73,6 +82,8 @@
   display: flex;
   cursor: pointer;
   gap: 1em;
+  align-items: center; 
+  margin-left: 2em; 
   & a{
     text-decoration: none;
     color: #000;
@@ -81,4 +92,19 @@
 .nav-bar a:hover{
   color: #425146;
   transform: scale(110%);
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 1em; 
+  margin-left: auto; 
+}
+.custom {
+  color: rgb(109, 130, 115);
+  font-size: 1.5rem; 
+}
+.custom:hover {
+  color:#425146;
+  transition: 0.2s;
 }

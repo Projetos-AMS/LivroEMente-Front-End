@@ -1,15 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CarrinhoComponent } from './views/carrinho/carrinho.component';
-import { VendasComponent } from './views/vendas/vendas.component';
 import { HomeComponent } from './views/home/home.component';
 import { DetailComponent } from './views/detail/detail.component';
 import { CadastroLivroComponent } from './views/cadastro-livro/cadastro-livro.component';
 import { LoginComponent } from './views/login/login.component';
 import { CadastroClienteComponent } from './views/cadastro-cliente/cadastro-cliente.component';
-import { CadastroVendedorComponent } from './views/cadastro-vendedor/cadastro-vendedor.component';
 import { AuthGuard } from './account/shared/auth.guard';
-import { PagamentoComponent } from './views/pagamento/pagamento.component';
 import { PainelAdmComponent } from './views/painel-adm/painel-adm.component';
 import { OrdersComponent } from './views/admin/orders/orders.component';
 import { BookComponent } from './views/admin/book/book.component';
