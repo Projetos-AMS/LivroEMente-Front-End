@@ -20,33 +20,54 @@ const routes: Routes = [
     { path: 'success', component: HomeComponent },
     { path: 'failure', component: HomeComponent },
     { path: 'pending', component: HomeComponent }
-  ]
-},
-  // children: [
-    {path:'carrinho', component: CarrinhoComponent},
-    {path:'vendas', component: VendasComponent},
-    {path:'detalhe', component: DetailComponent},
-    {path:'cadastroCliente', component: CadastroClienteComponent},
-    {path:'cadastroVendedor', component: CadastroVendedorComponent},
-    {path:'pagamento', component: PagamentoComponent},
-    {path: 'painel', component: PainelAdmComponent},
-    {path: 'pedidos', component: OrdersComponent},
-    {path: 'livros', component: BookComponent},
-    {path: 'profile', component: UserProfileComponent},
-  // ]
-  {
-    path:'upload/:id', component: CadastroLivroComponent,
-    
-   // canActivate: [AuthGuard]
+   ]
   },
-  { path: 'upload', component: CadastroLivroComponent },
+  { path:'carrinho', component: CarrinhoComponent},
+  { path:'detalhe', component: DetailComponent},
+  { path:'cadastro', component: CadastroClienteComponent},
   {
-  path: '',
-  component: LoginComponent,
-  children: [
-    { path:'', redirectTo:'login', pathMatch: 'full' },
-    {path:'login', component: LoginComponent},
-  ]
+    path: 'painel',
+    component: PainelAdmComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['admin'] }
+  },
+  {
+    path: 'pedidos',
+    component: OrdersComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['admin'] }
+  },
+  {
+    path: 'livros',
+    component: BookComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['admin'] }
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['user', 'admin'] }
+  },
+  {
+    path: 'upload/:id',
+    component: CadastroLivroComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['admin'] }
+  },
+  {
+    path: 'upload',
+    component: CadastroLivroComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['admin'] }
+  },
+  {
+    path: '',
+    component: LoginComponent,
+    children: [
+      { path:'', redirectTo:'login', pathMatch: 'full' },
+      { path:'login', component: LoginComponent},
+    ]
   }
 ];
 
