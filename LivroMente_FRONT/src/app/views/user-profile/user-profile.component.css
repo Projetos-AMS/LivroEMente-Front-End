@@ -57,6 +57,7 @@ body{
 .options-display{
   background-color: #f3f2f2;
   padding: 3em;
+  height: 100%;
 }
 
 .order{

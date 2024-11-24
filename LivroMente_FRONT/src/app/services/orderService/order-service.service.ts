@@ -20,8 +20,6 @@ export class OrderService {
     return this._http.post<boolean>(EndpointsUrls.apiEndpoints['addOrder'], orderData);
     }
 
- 
-
   getAllOrders(top: number,skip:number) : Observable<any>{
     let params = new HttpParams()
     .set('$top',top.toString())
@@ -38,4 +36,7 @@ export class OrderService {
     return this._http.delete(`${EndpointsUrls.apiEndpoints['cancelOrder']}${id}`);
   }
 
+  getUserOrderById(id: string){
+    return this._http.get<OrderDto>(`${EndpointsUrls.apiEndpoints['userOrder']}${id}/orders`)
+  }
 }

@@ -97,5 +97,4 @@ export class AccountService {
     window.localStorage.removeItem('token');
     this.userSubject.next(null);
   }
-
 }

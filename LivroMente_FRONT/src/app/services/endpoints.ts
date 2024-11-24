@@ -17,6 +17,7 @@ export namespace EndpointsUrls {
         allOrders:`${apiUrl}/Order`,
         byIdOrder: `${apiUrl}/Order/`,
         preference: `${apiUrl}/Preference`,
-        cancelOrder: `${apiUrl}/Order/`
+        cancelOrder: `${apiUrl}/Order/`,
+        userOrder: `${apiUrl}/Order/`
     };
 }
