@@ -23,7 +23,7 @@ export class BookComponent implements AfterViewInit,OnInit {
 
   displayedColumns: string[] = ['title', 'company', 'value', 'status','acao'];
   books: any[] = [];
-  totalItems: number = 0; 
+  totalItems: number = 100; 
   pageSize: number = 5; 
   currentPage: number = 0;
   readonly animal = signal('');
@@ -47,7 +47,13 @@ export class BookComponent implements AfterViewInit,OnInit {
     const skip = this.currentPage * this.pageSize;
     this.bookService.getAllBooks(this.pageSize,skip).subscribe(data => {
       this.books = data;
-      this.totalItems = data['@odata.count']; 
+
+      if(this.books.length <= 0){
+        this.totalItems = this.books.length;
+       }else{
+        this.totalItems = 100;
+       }
+   
     })
   }
 

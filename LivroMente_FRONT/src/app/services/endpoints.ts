@@ -7,6 +7,7 @@ export namespace EndpointsUrls {
         allBooks: `${apiUrl}/Book`,
         addBook: `${apiUrl}/Book`,
         byBook: `${apiUrl}/Book/`,
+        byBookTitle: `${apiUrl}/Book/`,
         updateBook: `${apiUrl}/Book/`,
         cancelBook: `${apiUrl}/Book/`,
         allCategories: `${apiUrl}/CategoryBook`,

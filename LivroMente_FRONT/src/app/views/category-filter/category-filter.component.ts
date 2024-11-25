@@ -19,6 +19,9 @@ export class CategoryFilterComponent {
   Categories: any;
   Book!: Book;
   selectedCategories: string[] = [];
+  tituloBusca: string = ''; 
+  produtoEncontrado: any | null = null; 
+  mensagemErro: string = ''; 
 
   faSearch = faSearch;
 
@@ -61,6 +64,30 @@ export class CategoryFilterComponent {
       });
     }
   }
+
+  buscarProdutoPorTitulo() {
+    if (!this.tituloBusca.trim()) {
+      this.mensagemErro = 'Digite um título válido!';
+      this.produtoEncontrado = null;
+      return;
+    }
+
+    this._bookService.getByTitleBook(this.tituloBusca).subscribe({
+      next: (produto) => {
+        this.produtoEncontrado = produto;
+        this.mensagemErro = '';
+      },
+      error: (err) => {
+        console.error('Erro ao buscar produto:', err);
+        this.mensagemErro = 'Produto não encontrado!';
+        this.produtoEncontrado = null;
+      }
+    });
+  }
+ 
+
+
+
 
   public abrirProduto(Book = this.Book) {
     sessionStorage.setItem('produtoDetalhe', JSON.stringify(Book));

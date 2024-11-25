@@ -35,6 +35,9 @@ export class HomeComponent implements OnInit {
   listaBook: Book[] = [];
   faSearch = faSearch;
   user: User | null = null;
+  tituloBusca: string = ''; 
+  produtoEncontrado: any | null = null; 
+  mensagemErro: string = ''; 
 
 
   constructor(
@@ -131,7 +134,9 @@ export class HomeComponent implements OnInit {
       console.log('Collection Status:', collectionStatus);
       console.log('Payment ID:', paymentId);
       console.log('Status:', status);
-      this.ProcessarPedido(status);
+      if(status==undefined){}
+      else{this.ProcessarPedido(status);}
+      
 
       // Aqui você pode fazer a lógica para verificar se a transação foi bem-sucedida
       if (collectionStatus === 'approved') {

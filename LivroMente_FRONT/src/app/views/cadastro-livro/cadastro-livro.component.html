@@ -26,7 +26,7 @@
             name="title"
             maxlength="{{maxTitleNameSize}}"
             formControlName="title" required />
-            <mat-hint align="end">{{ bookForm.get('title')?.value?.length }} / {{maxTitleNameSize}}</mat-hint>
+            <mat-hint align="end" style="font-size:14px">Máximo: {{ bookForm.get('title')?.value?.length }} / {{maxTitleNameSize}}</mat-hint>
         </div>
         <div class="input-box">
           <span class="details">Autor:</span>
@@ -37,7 +37,7 @@
             formControlName="author"
             maxlength="{{maxAuthorNameSize}}"
             required />
-            <mat-hint align="end">{{ bookForm.get('author')?.value?.length }} / {{maxAuthorNameSize}}</mat-hint>
+            <mat-hint align="end" style="font-size:14px">Máximo: {{ bookForm.get('author')?.value?.length }} / {{maxAuthorNameSize}}</mat-hint>
         </div>
         <div class="input-box">
           <span class="details">Sinopse:</span>
@@ -47,7 +47,7 @@
             name="Synopsis"
             maxlength="{{maxSynopsisNameSize}}"
             formControlName="synopsis" required />
-            <mat-hint align="end">{{ bookForm.get('synopsis')?.value?.length }} / {{maxSynopsisNameSize}}</mat-hint> 
+            <mat-hint align="end" style="font-size:14px">Máximo: {{ bookForm.get('synopsis')?.value?.length }} / {{maxSynopsisNameSize}}</mat-hint> 
         </div>
         <div class="input-box">
           <span class="details">Quantidade:</span>
@@ -78,7 +78,7 @@
             formControlName="publishingCompany"
             maxlength="{{maxPublishingCompanyNameSize}}"
             required />
-            <mat-hint align="end">{{ bookForm.get('publishingCompany')?.value?.length }} / {{maxPublishingCompanyNameSize}}</mat-hint>
+            <mat-hint align="end" style="font-size:14px">Máximo: {{ bookForm.get('publishingCompany')?.value?.length }} / {{maxPublishingCompanyNameSize}}</mat-hint>
         </div>
         <div class="input-box">
           <span class="details">Valor:</span>
@@ -101,7 +101,7 @@
             formControlName="language"
             maxlength="{{maxLanguageNameSize}}"
             required />
-            <mat-hint align="end">{{ bookForm.get('language')?.value?.length }} / {{maxLanguageNameSize}}</mat-hint>
+            <mat-hint align="end" style="font-size:14px">Mínimo: {{ bookForm.get('language')?.value?.length }} / {{maxLanguageNameSize}}</mat-hint>
           
           
         </div>
@@ -141,10 +141,10 @@
             formControlName="isbn"
             maxlength="{{maxIsbnNameSize}}"
              />
-             <mat-hint align="end">{{ bookForm.get('isbn')?.value?.length }} / {{maxIsbnNameSize}}</mat-hint>
+             <mat-hint align="end" style="font-size:14px">Mínimo: {{ bookForm.get('isbn')?.value?.length }} / {{maxIsbnNameSize}}</mat-hint>
         </div>
 
-        <div>
+        <div class="input-box">
           <mat-slide-toggle formControlName="isActive">Ativo</mat-slide-toggle>
         </div>
         
