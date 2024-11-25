@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OrderService } from 'src/app/services/orderService/order-service.service';
 import { CommonModule } from '@angular/common';
+import { AccountService } from 'src/app/services/accountService/account.service';
+import { User } from 'src/app/model/User';
 
 @Component({
   selector: 'app-user-profile',
@@ -16,6 +18,7 @@ import { CommonModule } from '@angular/common';
 })
 export class UserProfileComponent{
   Orders: any;
+  user: User | null = null;
 
   faCircleUser = faCircleUser;
   faClock = faClock;
@@ -26,23 +29,29 @@ export class UserProfileComponent{
   public currentMenu: number = 0;
 
   constructor(
-    private _orderService: OrderService
+    private orderService: OrderService,
+    private accountService: AccountService
   ){}
+
+  ngOnInit(): void {
+    this.accountService.user$.subscribe((userData) => {
+      this.user = userData;
+      console.log('User data:', this.user);
+    });
+
+    this.selectMenuOrderHistory();
+  }
 
   setCurrentMenu(menu : Menu){
     this.currentMenu = menu
   }
 
-  selectMenuMyProfile(){
-    this.setCurrentMenu(0);
-  }
-
   selectMenuOrderHistory(){
-    this._orderService.getbyIdOrder('1433ef3d-f9e1-4916-ac7c-9316716090dc').subscribe((orders) =>{
-      this.Orders = Array.isArray(orders) ? orders : [orders];
+    this.orderService.getUserOrderById(this.user!.id).subscribe((orders) =>{
+      this.Orders = orders;
       console.log(this.Orders);
     });
 
-    this.setCurrentMenu(1);
+    this.setCurrentMenu(0);
   };
 }

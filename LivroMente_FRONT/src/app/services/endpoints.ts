@@ -10,6 +10,7 @@ export namespace EndpointsUrls {
         updateBook: `${apiUrl}/Book/`,
         cancelBook: `${apiUrl}/Book/`,
         allCategories: `${apiUrl}/CategoryBook`,
+        byIdCategory:  `${apiUrl}/CategoryBook`,
         register: `${apiUrl}/users/Register`,
         addOrder: `${apiUrl}/Order`,
         login: `${apiUrl}/users/Login`,
@@ -17,6 +18,7 @@ export namespace EndpointsUrls {
         allOrders:`${apiUrl}/Order`,
         byIdOrder: `${apiUrl}/Order/`,
         preference: `${apiUrl}/Preference`,
-        cancelOrder: `${apiUrl}/Order/`
+        cancelOrder: `${apiUrl}/Order/`,
+        userOrder: `${apiUrl}/Order/`
     };
 }

@@ -14,12 +14,13 @@ import { OrderService } from 'src/app/services/orderService/order-service.servic
 import { OrderDto, OrderRequest } from 'src/app/model/OrderDetails';
 import { AccountService } from 'src/app/services/accountService/account.service';
 import { User } from 'src/app/model/User';
+import { ProductDisplayComponent } from '../product-display/product-display.component';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, FooterComponent, CategoryFilterComponent,FontAwesomeModule],
+  imports: [CommonModule, HeaderComponent, FooterComponent, CategoryFilterComponent, FontAwesomeModule, ProductDisplayComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -43,11 +44,11 @@ export class HomeComponent implements OnInit {
     private _orderService: OrderService,
     private route: ActivatedRoute,
     private _accountService: AccountService,
-    
-  ) {}
+
+  ) { }
 
   ngOnInit(): void {
-    this._accountService.user$.subscribe((userData) => {       this.user = userData;       console.log('User data:', this.user); });
+    this._accountService.user$.subscribe((userData) => { this.user = userData; console.log('User data:', this.user); });
     this.route.url.subscribe(url => {
       const path = url.join('/');
       console.log('Caminho atual:', path);
@@ -96,7 +97,7 @@ export class HomeComponent implements OnInit {
         .join(' or ');
 
 
-        console.error('Filter Query:', filterQuery);
+      console.error('Filter Query:', filterQuery);
       this._bookService.getBooksByCategory(filterQuery).subscribe((filteredBooks) => {
         this.Books = filteredBooks;
       });
@@ -110,107 +111,108 @@ export class HomeComponent implements OnInit {
       text,
       icon,
       confirmButtonText: 'OK'
-    });}
+    });
+  }
 
-    verificarTransacao() {
-      // Obtenha os parâmetros da URL
-      this.route.queryParams.subscribe(params => {
-        const collectionId = params['collection_id'];
-        const collectionStatus = params['collection_status'];
-        const paymentId = params['payment_id'];
-        const status = params['status'];
-
-
-
-
-        // Você pode acessar outros parâmetros da mesma forma
-  
-        console.log('Collection ID:', collectionId);
-        console.log('Collection Status:', collectionStatus);
-        console.log('Payment ID:', paymentId);
-        console.log('Status:', status);
-         this.ProcessarPedido(status);
-  
-        // Aqui você pode fazer a lógica para verificar se a transação foi bem-sucedida
-        if (collectionStatus === 'approved') {
-           this.limparCarrinho();
-        }
-      });
-    }
+  verificarTransacao() {
+    // Obtenha os parâmetros da URL
+    this.route.queryParams.subscribe(params => {
+      const collectionId = params['collection_id'];
+      const collectionStatus = params['collection_status'];
+      const paymentId = params['payment_id'];
+      const status = params['status'];
 
 
 
 
+      // Você pode acessar outros parâmetros da mesma forma
 
+      console.log('Collection ID:', collectionId);
+      console.log('Collection Status:', collectionStatus);
+      console.log('Payment ID:', paymentId);
+      console.log('Status:', status);
+      this.ProcessarPedido(status);
 
-
-
-    ProcessarPedido(status: string) {
-    
-      // Primeiro, certifique-se de que está buscando a lista de produtos no localStorage
-      var produtoLocalStoge = sessionStorage.getItem("ListaBook");
-      if (produtoLocalStoge) {
-        this.listaBook = JSON.parse(produtoLocalStoge);
+      // Aqui você pode fazer a lógica para verificar se a transação foi bem-sucedida
+      if (collectionStatus === 'approved') {
+        this.limparCarrinho();
       }
+    });
+  }
 
 
 
-      var produtoLocalStoge1 = sessionStorage.getItem("produtoDetalhe");
-      if (produtoLocalStoge) {
-        this.listaBook = JSON.parse(produtoLocalStoge);
+
+
+
+
+
+  ProcessarPedido(status: string) {
+
+    // Primeiro, certifique-se de que está buscando a lista de produtos no localStorage
+    var produtoLocalStoge = sessionStorage.getItem("ListaBook");
+    if (produtoLocalStoge) {
+      this.listaBook = JSON.parse(produtoLocalStoge);
+    }
+
+
+
+    var produtoLocalStoge1 = sessionStorage.getItem("produtoDetalhe");
+    if (produtoLocalStoge) {
+      this.listaBook = JSON.parse(produtoLocalStoge);
+    }
+
+    // Crie o array de items a partir da lista de livros
+    console.log('Produto detalhado:', this.listaBook);
+    const orderData = {
+      orderRequest: {
+        userId: this.user?.id, // Substitua pelo ID do usuário correto
+        date: new Date().toISOString(),
+        valueTotal: this.listaBook.reduce((acc, book) => acc + book.value, 0), // Calcula o valor total
+        status: status, // O status da transação (ex.: "approved")
+        orderDetails: this.listaBook.map(book => ({
+          bookId: book.id, // ID do livro
+          amount: 1, // Quantidade do livro
+          valueUni: book.value,
+          // Valor unitário do livro
+        }))
       }
-    
-      // Crie o array de items a partir da lista de livros
-      console.log('Produto detalhado:', this.listaBook);
-      const orderData = {
-        orderRequest: {
-          userId: this.user?.id, // Substitua pelo ID do usuário correto
-          date: new Date().toISOString(),
-          valueTotal: this.listaBook.reduce((acc, book) => acc + book.value, 0), // Calcula o valor total
-          status: status, // O status da transação (ex.: "approved")
-          orderDetails: this.listaBook.map(book => ({
-            bookId: book.id, // ID do livro
-            amount: 1, // Quantidade do livro
-            valueUni: book.value,
-           // Valor unitário do livro
-          }))
-        }
-      }as OrderRequest;
-      console.log(orderData)
-      
-      // Enviar para a API
-      this._orderService.createOrdeer(orderData).subscribe(
-        response => {
-          console.log('Pedido processado com sucesso', response);
-        },
-        error => {
-          console.error('Erro ao processar o pedido', error);
-        }
-      );
-    }
-   
-  
-    
-   
-  
-    limparCarrinho() {
-      localStorage.removeItem("produtoLocalStoge");
-      sessionStorage.removeItem("ListaBook");
-      console.log('Carrinho limpo após compra bem-sucedida!');
-      // Redirecione para a página inicial ou onde desejar
-      // this.router.navigate(['/home']);
-    }
+    } as OrderRequest;
+    console.log(orderData)
 
-    public abrirProduto(Book = this.Book) {
-    
-      if (!Book || Object.keys(Book).length === 0) {
-        console.error('Objeto Book está indefinido ou vazio.');
-        return;  // Sai da função se o Book estiver indefinido ou vazio
+    // Enviar para a API
+    this._orderService.createOrdeer(orderData).subscribe(
+      response => {
+        console.log('Pedido processado com sucesso', response);
+      },
+      error => {
+        console.error('Erro ao processar o pedido', error);
+      }
+    );
+  }
+
+
+
+
+
+  limparCarrinho() {
+    localStorage.removeItem("produtoLocalStoge");
+    sessionStorage.removeItem("ListaBook");
+    console.log('Carrinho limpo após compra bem-sucedida!');
+    // Redirecione para a página inicial ou onde desejar
+    // this.router.navigate(['/home']);
+  }
+
+  public abrirProduto(Book = this.Book) {
+
+    if (!Book || Object.keys(Book).length === 0) {
+      console.error('Objeto Book está indefinido ou vazio.');
+      return;  // Sai da função se o Book estiver indefinido ou vazio
     }
 
     sessionStorage.setItem('produtoDetalhe', JSON.stringify(Book));
     console.error('Produto detalhado armazenado:', Book);
     this.router.navigate(['/detalhe']);
-      }
-    }
+  }
+}
 

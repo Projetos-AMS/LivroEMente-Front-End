@@ -42,7 +42,6 @@ body{
 }
 
 .user-data{
-  padding: 10em;
 }
 
 .option:hover{
@@ -67,6 +66,13 @@ body{
 .order-details, .order-status, .order-products, .order-total{
   border-bottom: 1px solid rgb(215, 215, 215);
   padding: 10px;
+}
+
+.order-history{
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  gap: 3vh;
 }
 
 .order-status span{
