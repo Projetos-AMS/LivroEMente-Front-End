@@ -38,14 +38,12 @@ export class UserProfileComponent{
       this.user = userData;
       console.log('User data:', this.user);
     });
+
+    this.selectMenuOrderHistory();
   }
 
   setCurrentMenu(menu : Menu){
     this.currentMenu = menu
-  }
-
-  selectMenuMyProfile(){
-    this.setCurrentMenu(0);
   }
 
   selectMenuOrderHistory(){
@@ -54,6 +52,6 @@ export class UserProfileComponent{
       console.log(this.Orders);
     });
 
-    this.setCurrentMenu(1);
+    this.setCurrentMenu(0);
   };
 }

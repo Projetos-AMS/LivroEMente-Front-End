@@ -1,0 +1,30 @@
+<p class="category-name">{{ displayName }}</p>
+<p-carousel
+  [value]="Books"
+  [numVisible]="3"
+  [numScroll]="1"
+  [circular]="true"
+  [showIndicators]="false"
+>
+  <ng-template let-book pTemplate="item">
+    <div class="product-display">
+      <div class="product-card">
+        <div class="image-placeholder">
+          <img
+            src="{{ book.urlImg }}"
+            [alt]="book.title"
+            class="product-image"
+          />
+        </div>
+        <div class="product-info">
+          <a (click)="abrirProduto(book)" class="product-name">{{
+            book.title
+          }}</a>
+          <div class="product-price-tag">
+            <p class="product-price">R${{ book.value }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-carousel>
