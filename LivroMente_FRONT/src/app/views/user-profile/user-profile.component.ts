@@ -19,6 +19,7 @@ import { User } from 'src/app/model/User';
 export class UserProfileComponent{
   Orders: any;
   user: User | null = null;
+  botaoGratis!:boolean;
 
   faCircleUser = faCircleUser;
   faClock = faClock;

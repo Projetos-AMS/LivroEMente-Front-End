@@ -13,7 +13,7 @@ export interface OrderDto{
 export interface OrderRequest{
     orderRequest:{
     userId: string,
-    
+
     date: string,
     status:string,
     valueTotal: number,
@@ -42,7 +42,7 @@ export interface BookDto{
     author: string,
     value: number,
     publishingCompany: string
-    category:CategoryDto
+    category:CategoryDto,
 }
 
 export interface CategoryDto{

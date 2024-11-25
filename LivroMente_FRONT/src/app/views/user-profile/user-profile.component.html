@@ -3,7 +3,7 @@
   <div class="user-menu">
     <div class="user-image">
       <fa-icon class="user-profile-image" [icon]="faCircleUser"></fa-icon>
-      <span>Bem-vindo, {{user?.completeName}}</span>
+      <span>Bem-vindo, {{ user?.completeName }}</span>
     </div>
     <div class="user-menu-options">
       <button (click)="selectMenuOrderHistory()" class="option">
@@ -19,7 +19,8 @@
       <div class="order">
         <div class="order-header">
           <div class="order-details">
-            <span class="bold">Pedido:</span> {{ order.id }} - {{ order.date | date: 'dd/MM/yyyy HH:mm'}}
+            <span class="bold">Pedido:</span> {{ order.id }} -
+            {{ order.date | date : "dd/MM/yyyy HH:mm" }}
           </div>
           <div class="order-status">
             <span class="bold">{{ order.status }}</span>
@@ -33,13 +34,25 @@
             </div>
             <div class="book-details">
               <span class="bold">{{ orderDetail.book.title }}</span>
-              <span>R${{orderDetail.book.value}}</span>
+              <span>R${{ orderDetail.book.value }}</span>
+            </div>
+            <div class="open-book-container">
+              <a
+                href="{{ orderDetail.book.urlBook }}"
+                target="_blank"
+                id="idDoBotao"
+                clas
+                ><button class="open-book">Abrir link</button></a
+              >
             </div>
           </div>
           }
         </div>
         <div class="order-total">
-          <span>Order Total: <span class="total-price">R${{order.valueTotal}}</span></span>
+          <span
+            >Order Total:
+            <span class="total-price">R${{ order.valueTotal }}</span></span
+          >
         </div>
       </div>
       }

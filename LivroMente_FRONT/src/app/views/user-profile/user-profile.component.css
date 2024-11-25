@@ -122,10 +122,25 @@ body{
 .order-total > span{
   display: flex;
   align-items: center;
-  gap: .2em;
+  gap: .20em;
 }
 
 .total-price{
   font-size: 35px;
   color: green;
+}
+
+.open-book{
+  background-color: #849a8a;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  padding: 1em 2em;
+}
+
+.open-book-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
