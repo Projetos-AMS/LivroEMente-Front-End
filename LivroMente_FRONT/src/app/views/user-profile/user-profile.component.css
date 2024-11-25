@@ -122,7 +122,7 @@ body{
 .order-total > span{
   display: flex;
   align-items: center;
-  gap: .2em;
+  gap: .20em;
 }
 
 .total-price{
