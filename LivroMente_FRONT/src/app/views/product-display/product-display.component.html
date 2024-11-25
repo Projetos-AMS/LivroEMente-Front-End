@@ -21,7 +21,10 @@
             book.title
           }}</a>
           <div class="product-price-tag">
-            <p class="product-price">R${{ book.value }}</p>
+            <ng-container *ngIf="book.value === 0"><p class="product-price">Grátis</p></ng-container>
+            <ng-container *ngIf="book.value !== 0"
+              > <p class="product-price">R${{ book.value | number : "1.2-2" }}</p></ng-container
+            >
           </div>
         </div>
       </div>
