@@ -27,6 +27,10 @@ export class BookService {
     return this._http.get<Book>(`${EndpointsUrls.apiEndpoints['byBook']}${id}`);
   }
 
+  getByTitleBook(title:string){
+    return this._http.get<Book>(`${EndpointsUrls.apiEndpoints['byBookTitle']}${title}`);
+  }
+
   postBook(book:BookDto){
     return this._http.post<boolean>(EndpointsUrls.apiEndpoints['addBook'],book);
   }

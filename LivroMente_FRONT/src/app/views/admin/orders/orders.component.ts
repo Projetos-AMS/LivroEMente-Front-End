@@ -19,7 +19,7 @@ import { OrderDetailsComponent } from './modals/order-details/order-details.comp
 export class OrdersComponent implements AfterViewInit,OnInit{
   displayedColumns: string[] = ['userId', 'date', 'valueTotal', 'status','acao'];
   orders: any[] = [];
-  totalItems: number = 0; 
+  totalItems: number = 100; 
   pageSize: number = 5; 
   currentPage: number = 0;
   readonly animal = signal('');
@@ -42,8 +42,14 @@ export class OrdersComponent implements AfterViewInit,OnInit{
   loadOrders() : void{
     const skip = this.currentPage * this.pageSize;
     this.orderService.getAllOrders(this.pageSize,skip).subscribe(data => {
-      this.orders = data;
-      this.totalItems = data['@odata.count']; 
+    this.orders = data;
+     
+     if(this.orders.length <= 0){
+      this.totalItems = this.orders.length;
+     }else{
+      this.totalItems = 100;
+     }
+     
     })
   }
 
@@ -92,4 +98,3 @@ export class OrdersComponent implements AfterViewInit,OnInit{
 
 
 }
-

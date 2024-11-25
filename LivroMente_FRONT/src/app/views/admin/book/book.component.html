@@ -1,7 +1,8 @@
 <div class="sidebar">
     <img src="assets/Logo.png" alt="Menu Image">
     <ul>
-        <li><a href="/painel">Home</a></li>
+        <li><a href="">Início</a></li>
+        <li><a href="/painel">Painel</a></li>
         <li><a href="/livros">Livros</a></li>
         <li><a href="/pedidos">Pedidos</a></li>
     </ul>
@@ -56,7 +57,6 @@
                 <ng-container matColumnDef="acao">
                     <th mat-header-cell *matHeaderCellDef> Ações </th>
                     <td mat-cell *matCellDef="let element">
-                        <mat-icon color="primary"  disabled>visibility</mat-icon>
                         <mat-icon-button [routerLink]="['/upload', element.id]">
                             <mat-icon>edit</mat-icon>
                         </mat-icon-button>
@@ -73,7 +73,6 @@
             [pageSize]="pageSize"
             [pageSizeOptions]="[5, 10, 20]"
             (page)="onPageChange($event)"
-                           showFirstLastButtons
                            aria-label="Select page of periodic elements">
             </mat-paginator>
         </div>

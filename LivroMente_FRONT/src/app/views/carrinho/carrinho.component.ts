@@ -34,6 +34,7 @@ export class CarrinhoComponent   implements OnInit{
     this._accountService.user$.subscribe((userData) => {
       this.user = userData; 
     });
+   this.listaBook = JSON.parse(sessionStorage.getItem("ListaBook") || '[]');
    this.ObterProduto();
    this.AtualizarTotal();
   }
@@ -64,12 +65,11 @@ export class CarrinhoComponent   implements OnInit{
 
   remover(book: Book){
    
-    var produtoLocalStoge = localStorage.getItem("produtoLocalStoge");
-    if(produtoLocalStoge){
-       this.listaBook = JSON.parse(produtoLocalStoge);
-       this.listaBook = this.listaBook.filter(p => p.id != book.id);
-       localStorage.setItem("produtoLocalStoge", JSON.stringify(this.listaBook));
-    }
+    const carrinho = JSON.parse(sessionStorage.getItem("ListaBook") || '[]');
+    const carrinhoAtualizado = carrinho.filter((item: any) => item.id !== book.id);
+    sessionStorage.setItem("ListaBook", JSON.stringify(carrinhoAtualizado));
+    this.listaBook = carrinhoAtualizado;
+    console.log(`Item com ID ${book.id} removido do carrinho!`);
   }
  
   comprar() {
