@@ -20,10 +20,14 @@ export class AuthGuard implements CanActivate {
     console.log(user)
 
     if (user) {
-      if(user.role && route.data['roles']?.includes(user.role)) {
-        console.log("role:" + user.role +"data: " + route.data['roles']?.includes(user.role));
+      const userRoles = user.role; 
+      const allowedRoles = route.data['roles'];
+  
+      if (userRoles && allowedRoles?.some((role: string) => userRoles.includes(role))) {
+        console.log("Roles do usuário:", userRoles, "Roles permitidas:", allowedRoles);
         return true;
       }
+  
       this.snackBar.open('Você não tem permissão para acessar esta página.', 'Fechar', {
         duration: 3000,
         horizontalPosition: 'center',

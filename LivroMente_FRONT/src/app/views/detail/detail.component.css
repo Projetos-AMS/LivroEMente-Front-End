@@ -18,14 +18,17 @@ main {
   display: flex;
   justify-content: space-between;
 }
+.product-image {
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  width: 50%;
+  height: 100%;       
+}
 
 .main-image {
   width: 300px;
-  height: 100%;
-}
-
-.product-image {
-  display: flex;
+  height: auto; 
 }
 
 .side-view {
@@ -61,11 +64,13 @@ h1 {
   color: black;
 }
 
-.price-quantity {
+.price-category {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 15px;
+  gap: 1em; 
+  margin-left: auto; 
 }
 
 .quantity-box{
@@ -91,17 +96,6 @@ select selected {
   height: 100px;
   margin-top: 20px;
   text-align: justify;
-
-  /* Propriedades gerais para controle de texto */
-  /* overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 25em; */
-
-  /* Propriedades específicas do WebKit para limitar o número de linhas */
-  /* display: -webkit-box; */
-  /* -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical; */
 }
 
 .option-button {

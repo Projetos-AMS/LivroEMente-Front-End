@@ -1,47 +1,29 @@
 <app-header></app-header>
 
 <main>
-    <div class="product-display" *ngIf="Book">
+    <div class="product-display" *ngIf="book">
         <div class="product-image">
-            <div class="side-view">
-                <img class="image-view" src="{{Book.urlImg}}" alt="livro">
-                <img class="image-view" src="{{Book.urlImg}}" alt="livro">
-                <img class="image-view" src="{{Book.urlImg}}" alt="livro">
-                <img class="image-view" src="{{Book.urlImg}}" alt="livro">
-            </div>
-            <img class="main-image" src="{{Book.urlImg}}" alt="livro">
+            <img class="main-image" src="{{book.urlImg}}" alt="livro">
         </div>
         <div class="product-info">
-            <h1>{{Book.title}}</h1>
-            <span>por <span class="seller">{{Book.author}}</span></span>
-            <div class="price-quantity">
+            <h1>{{book.title}}</h1>
+            <span>por <span class="seller">{{book.author}}</span></span>
+            <div class="price-category">
                 <span class="price">
-                    <ng-container *ngIf="Book.value === 0">Grátis</ng-container>
-                    <ng-container *ngIf="Book.value !== 0">R${{ Book.value | number: '1.2-2' }}</ng-container>
+                    <ng-container *ngIf="book.value === 0">Grátis</ng-container>
+                    <ng-container *ngIf="book.value !== 0">R${{ book.value | number: '1.2-2' }}</ng-container>
                 </span>
-                <div class="input-quantity">
-                    <label for="quantity">Qtd.</label>
-                    <input class="quantity-box" type="number" id="quantity" min="0" max="{{Book.quantity}}" value="{{Book.quantity}}">
-                </div>
+                <span>Categoria: <span class="seller">{{categoryName}}</span></span>
             </div>
-            <p>{{Book.synopsis}}</p>
+            <p>{{book.synopsis}}</p>
             <div class="option-button" >
-                <button class="add-to-cart"  *ngIf="botaoCarrinho" (click)="comprar(Book)">Adicionar ao Carrinho</button>
-                <button class="buy" *ngIf="botaoComprar">Comprar</button>
-                <a href="{{Book.urlBook}}" target="_blank" id="idDoBotao" *ngIf="botaoGratis"><button  class="add-to-cart" >Abrir link</button></a>
+                <button class="add-to-cart"  *ngIf="botaoCarrinho" (click)="add(book)">Adicionar ao Carrinho</button>
+                <button class="buy" *ngIf="botaoComprar" (click)="comprar(book)" >Comprar</button>
+                <a href="{{book.urlBook}}" target="_blank" id="idDoBotao" *ngIf="botaoGratis"><button  class="add-to-cart" >Abrir link</button></a>
             </div>
         </div>
     </div>
     <div class="general-product">
-        <div class="seller-profile">
-            <img class="profile-picture" src="./assets/teste.jpg" alt="">
-            <div class="user-info">
-                <span class="username">José M. Ribeiro</span>
-                <span class="star-rate">5,0 XXXXXX</span>
-            </div>
-            <button class="follow">SEGUIR</button>
-            <button class="report">DENUNCIAR</button>
-        </div>
         <div class="product-title">
             <span class="category-title">Você também pode gostar</span>
             <div class="product">
@@ -61,24 +43,5 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="product">
-            <span class="title">Produtos Relacionados</span>
-            <div class="product-display">
-                <ng-container *ngFor="let product of products">
-                    <div class="product-card">
-                        <div class="card-image">
-                            <img src="./assets/teste.jpg" alt="" class="image">
-                        </div>
-                        <div class="product-tag">
-                            <div class="product-text">
-                                <span class="product-name">{{product.name}}</span>
-                                <span class="product-price">{{product.price}}</span>
-                            </div>
-                            <button class="buy-button">ADICIONAR O CARRINHO</button>
-                        </div>
-                    </div>
-                </ng-container>
-            </div>
-        </div> -->
     </div>
 </main>

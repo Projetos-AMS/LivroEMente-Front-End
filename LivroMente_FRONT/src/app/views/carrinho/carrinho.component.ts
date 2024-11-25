@@ -5,6 +5,10 @@ import { Book } from 'src/app/model/Book';
 import { PreferenceService } from 'src/app/services/preferenceService/preference.service';
 import { Preference } from "src/app/model/Preference";
 import { FooterComponent } from '../components/footer/footer.component';
+import { AccountService } from 'src/app/services/accountService/account.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { User } from 'src/app/model/User';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,8 +21,19 @@ import { FooterComponent } from '../components/footer/footer.component';
 
 export class CarrinhoComponent   implements OnInit{
   listaBook: Book[] = [];
-  constructor(private preferenceService: PreferenceService){}
+  user: User | null = null;
+  
+  constructor(
+    private preferenceService: PreferenceService, 
+    private _accountService: AccountService, 
+    private _snackBar: MatSnackBar,
+    private _router: Router,
+  ){}
+ 
   ngOnInit(): void {
+    this._accountService.user$.subscribe((userData) => {
+      this.user = userData; 
+    });
    this.ObterProduto();
    this.AtualizarTotal();
   }
@@ -31,9 +46,6 @@ export class CarrinhoComponent   implements OnInit{
     currencyId: 'BRL',
     unitPrice: 0
   };
-
-
-
 
   totalGeral: any;
   
@@ -61,7 +73,15 @@ export class CarrinhoComponent   implements OnInit{
   }
  
   comprar() {
-    
+    if (this.user == null)
+    {
+      this._snackBar.open('Entre em sua conta, para continuar suas compras', 'Fechar', {
+        duration: 1500,
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+      });
+      this._router.navigate(['login']);
+    }
     // Primeiro, certifique-se de que está buscando a lista de produtos no localStorage
     var produtoLocalStoge = localStorage.getItem("produtoLocalStoge");
     if (produtoLocalStoge) {

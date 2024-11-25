@@ -16,6 +16,6 @@ export class CategoryService {
   }
 
   getCategoryById(id: string) : Observable<Category>{
-    return this._http.get<Category>(EndpointsUrls.apiEndpoints['byIdCategory']);
+    return this._http.get<Category>(EndpointsUrls.apiEndpoints['byIdCategory']+id);
   }
 }
